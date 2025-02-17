@@ -1,0 +1,44 @@
+---
+const languages = [
+    { code: 'en', name: 'English', flag: '/flags/en.png' },
+    { code: 'es', name: 'Español', flag: '/flags/es.png' }
+];
+
+const currentLang = 'en';
+---
+
+<div class="lang-container" id="langSelector">
+    <img 
+        src={languages.find(lang => lang.code === currentLang)?.flag} 
+        alt="Language" 
+        class="lang-img"
+    />
+    <span class="lang-text">
+        {languages.find(lang => lang.code === currentLang)?.name}
+    </span>
+    <div class="language-menu hidden" id="langMenu">
+        {languages.map(lang => (
+            <div class="dropdown-item">
+                <a href={`?lang=${lang.code}`} class="dropdown-item-text">
+                    <img src={lang.flag} alt={lang.name} class="lang-img" />
+                    {lang.name}
+                </a>
+            </div>
+        ))}
+    </div>
+</div>
+
+<script>
+    const langSelector = document.getElementById('langSelector');
+    const langMenu = document.getElementById('langMenu');
+
+    langSelector?.addEventListener('click', () => {
+        langMenu?.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!langSelector?.contains(e.target as Node)) {
+            langMenu?.classList.add('hidden');
+        }
+    });
+</script>

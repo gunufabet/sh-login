@@ -1,0 +1,67 @@
+---
+interface Props {
+  text?: string;
+}
+
+const { text = "Register Now" } = Astro.props;
+---
+
+<register-button>
+  <button class="custom-btn-container btn-type">
+    <span class="btn-text register-btn-text">
+      {text}
+    </span>
+  </button>
+</register-button>
+
+<style>
+  .custom-btn-container {
+    cursor: pointer;
+    color: #0a0425;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(255, 246, 219, 0.8);
+    font-weight: 500;
+    border-style: solid;
+    background: linear-gradient(227deg, #8b6832 12.69%, #fcdd9a 51.04%, #966b2a 87.06%);
+  }
+
+  .btn-type {
+    border-radius: 25px;
+    min-height: 36px !important;
+  }
+
+  .btn-text {
+    color: #0a0425;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(255, 246, 219, 0.8);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .register-btn-text {
+    margin: 0 0.5rem;
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 475px) {
+    .btn-text {
+      font-size: 12px;
+    }
+  }
+</style>
+
+<script>
+  class RegisterButton extends HTMLElement {
+    constructor() {
+      super();
+      
+      this.querySelector('button')?.addEventListener('click', () => {
+        // Add your registration logic here
+        console.log('Register button clicked');
+      });
+    }
+  }
+
+  customElements.define('register-button', RegisterButton);
+</script>
