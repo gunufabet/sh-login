@@ -1,0 +1,4842 @@
+#main {
+    overflow-y: hidden;
+}
+
+@media (min-width: 1000px) {
+    #main {
+        margin: 0 auto;
+        max-width: 100%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}
+
+@media (min-width: 1980px) {
+    #main {
+        margin: 0 auto;
+        max-width: 100%;
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+/* Styles from Loading.vue */
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+/* Styles from MainContent.vue */
+.main-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem 0 1rem;
+}
+
+.main-content-title {
+    font-weight: 500;
+    font-size: 46px;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    color: #ebc76e;
+}
+
+.main-content-detail {
+    line-height: 2rem;
+    font-weight: 300;
+    color: #d9d9d9;
+    text-align: left;
+    /* Limit the height to 320px */
+    max-height: 100px;
+    /* Hide content that exceeds the max-height */
+    overflow: hidden;
+    /* Position relative for the pseudo-element */
+    position: relative;
+}
+
+.main-content-detail::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(rgba(0, 0, 0, 0), #000);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* New class to remove the fade effect when expanded */
+.main-content-remove-after::after {
+    display: none;
+}
+
+.main-content-detail-open {
+    max-height: 100%;
+    /* Fully expand */
+    transition: max-height 0.3s ease;
+}
+
+.main-content-detail-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.3s ease;
+}
+
+.main-content-show-more {
+    display: block;
+    cursor: pointer;
+}
+
+.main-content-flip-vertical {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    margin-top: 1rem;
+}
+
+.main-content-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+.main-content-btn-container {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    overflow-x: auto;
+}
+
+@media only screen and (max-width: 475px) {
+    .main-content-title {
+        font-size: 36px;
+    }
+
+    .main-content-detail::after {
+        transition: none;
+    }
+
+    .main-content-detail-open,
+    .main-content-detail-close {
+        transition: none;
+    }
+
+    .main-content-show-more .main-content-flip-vertical,
+    .main-content-show-more .main-content-flip-vertical-transition {
+        transition: none;
+    }
+}
+
+/* Styles from AccordionH2Style1.vue */
+.h2style1-details-disabled summary {
+    pointer-events: none;
+    /* prevents click events */
+}
+
+.h2style1-accordion {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.h2style1-accordion-text {
+    margin-left: 1rem;
+    padding-right: 1.3rem;
+    color: #ebc76e;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.h2style1-accordion-indent {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background: linear-gradient(180deg, #ebc76e 0%, #85713e 100%);
+    width: 5px;
+    height: 18px;
+}
+
+.h2style1-accordion-panel {
+    background-color: transparent;
+    overflow: hidden;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h2style1-open {
+    max-height: 100%;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.h2style1-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.h2style1-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.h2style1-open::after {
+    display: none;
+}
+
+.h2style1-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h2style1-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h2style1-accordion-panel summary::marker {
+    display: none;
+}
+
+.h2style1-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    /* Limit to 3 lines */
+    transition: -webkit-line-clamp 0.5s ease;
+}
+
+.h2style1-accordion-h2-add-padding {
+    padding: 0 18px;
+}
+
+.h2style1-clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* Limit to 3 lines */
+    overflow: hidden;
+}
+
+/* Expanded state (when openPanel is true) */
+.h2style1-expanded {
+    -webkit-line-clamp: unset;
+    /* Remove line clamp */
+    display: block;
+}
+
+.h2style1-flip-vertical {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+    margin-top: 1rem;
+}
+
+.h2style1-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+/* Styles from AccordionH2Style2.vue */
+.h2style2-disabled summary {
+    pointer-events: none;
+    /* prevents click events */
+}
+
+.h2style2-accordion {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.h2style2-accordion-text {
+    margin-left: 1rem;
+    padding-right: 1.3rem;
+    color: #ebc76e;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.h2style2-accordion-indent {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background: linear-gradient(180deg, #ebc76e 0%, #85713e 100%);
+    width: 5px;
+    height: 18px;
+}
+
+.h2style2-accordion-panel {
+    padding: 0 18px;
+    background-color: transparent;
+    overflow: hidden;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h2style2-open {
+    max-height: 100%;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.h2style2-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.h2style2-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.h2style2-open::after {
+    display: none;
+}
+
+.h2style2-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h2style2-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h2style2-accordion-panel summary::marker {
+    display: none;
+}
+
+.h2style2-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* Limit to 3 lines */
+    transition: -webkit-line-clamp 0.5s ease;
+}
+
+.h2style2-flip-vertical {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.h2style2-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+.h2style2-accordion-icn {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 1px;
+}
+
+/* Styles from HotMatchSection.vue */
+.hot-match-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hot-match-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.hot-match-text-1 {
+    color: #181818;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hot-match-text-2 {
+    color: #181818;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 0.1rem;
+}
+
+.hot-match-bg {
+    background: linear-gradient(100deg, #ebc76e 0%, #ba8c4e 100%);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .hot-match-text-1 {
+        font-size: 14px;
+    }
+
+    .hot-match-text-2 {
+        font-size: 14px;
+    }
+}
+
+/* Styles from TabMenu.vue */
+.tab-menu-scrollmenu h2 {
+    cursor: pointer;
+    display: inline-block;
+    /* color: white; */
+    text-align: start;
+    line-height: 1.5rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    /* Add these styles */
+    max-width: 250px;
+    /* Limit the maximum width */
+    word-wrap: break-word;
+    /* Allow breaking words to fit within max-width */
+    /* white-space: normal; */
+    /* Allow text to wrap to the next line */
+}
+
+.tab-menu-tab-highlight {
+    border-style: solid;
+    border-width: 0 0 4px 0;
+    border-color: #ebc76e;
+    color: #ebc76e;
+    font-weight: 700;
+    padding-bottom: 0.8rem;
+    padding-top: 1rem;
+}
+
+.tab-menu-scrollmenu {
+    background: linear-gradient(0deg, #29272a 0%, #000 100%);
+    overflow: auto;
+    white-space: nowrap;
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Align items to the top */
+    justify-content: space-around;
+}
+
+@media only screen and (max-width: 475px) {
+    .tab-menu-scrollmenu {
+        justify-content: flex-start;
+    }
+}
+
+.tab-menu-scrollmenu h2:hover {
+    color: #ebc76e;
+}
+
+.tab-menu-scrollmenuItemActive {
+    color: #ebc76e;
+}
+
+.tab-menu-scrollmenuItemNotActive {
+    color: white;
+}
+
+.tab-menu-item-width {
+    white-space: nowrap;
+}
+
+.tab-menu-item-width-h2 {
+    min-width: 200px;
+    white-space: normal;
+}
+
+/* Styles from LiveScoreTabMenu.vue */
+.live-tab {
+    padding: 1rem 0 1rem 0;
+    position: relative;
+    flex-shrink: 0;
+    background: #29272a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.live-tab-text {
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0.5rem 0 0.5rem;
+    display: inline-flex;
+    /* Ensure inline flex layout */
+    align-items: center;
+    /* Align text and count vertically */
+    gap: 0.25rem;
+    /* Adds spacing between text and count-button */
+}
+
+.live-tab-text-highlight {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.live-tab-count-button {
+    border-radius: 50%;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #fff;
+    text-align: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.live-tab-count-button-live {
+    background: #b01128;
+}
+
+.live-tab-count-button-others {
+    background: #674e2b;
+}
+
+.live-tab-count-button-text {
+    white-space: nowrap;
+}
+
+.live-tab-league-title {
+    display: flex;
+    justify-content: start;
+    padding: 1rem;
+}
+
+.live-tab-livescore-content {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.5rem;
+}
+
+/* Reserve space for table summary to prevent shifts */
+.live-tab-table-summary-placeholder {
+    min-height: 100px;
+    /* Adjust based on expected table size */
+}
+
+/* Padding between sections */
+.live-tab-padding-divider {
+    padding-top: 2rem;
+}
+
+/* Pre-reserved height for dynamic text content */
+.live-tab-livescore-content-placeholder {
+    min-height: 1.5rem;
+    /* Adjust based on expected content size */
+}
+
+/* Pre-reserved space for the list */
+.live-tab-list-placeholder {
+    min-height: 50px;
+    /* Adjust based on expected list content size */
+}
+
+@media only screen and (max-width: 475px) {
+    .live-tab-live-tab-text {
+        font-size: 14px;
+    }
+
+    .live-tab-text-highlight {
+        font-size: 14px;
+    }
+
+    .live-tab-count-button {
+        font-size: 12px;
+        width: 1.2rem;
+        height: 1.2rem;
+        padding: 3px;
+    }
+
+    .live-tab-league-title {
+        justify-content: start;
+    }
+}
+
+/* Styles from BonusSection.vue */
+.bonus-banner-section {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.bonus-banner-section-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.bonus-banner-section-img {
+    width: 100%;
+    /* Default for small screens */
+    max-width: 60%;
+    /* Align with larger screens */
+    vertical-align: middle;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 800px) {
+    .bonus-banner-section-img {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .bonus-banner-section-img {
+        width: 100%;
+    }
+}
+
+/* Styles from LeagueTableSummary.vue */
+.league-table-standing-tab-wrapper {
+    padding-left: 2rem;
+}
+
+.league-table-standing-tab {
+    padding: 1rem 0 1rem 0;
+    position: relative;
+    flex-shrink: 0;
+    background: linear-gradient(0deg, #29272a 0%, #000 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 75%;
+}
+
+.league-table-summary-table-wrapper {
+    padding: 0 0 1rem 0;
+    overflow-x: auto;
+    padding-left: 2rem;
+}
+
+.league-table-summary-table {
+    width: 75%;
+    table-layout: inherit;
+    border-collapse: collapse;
+}
+
+.league-table-summary-table th,
+.league-table-summary-table td {
+    text-align: left;
+    padding: 1rem 0.7rem 1rem 0.7rem;
+}
+
+.league-table-summary-table th {
+    background: #161619;
+    color: #ebc76e;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: right;
+}
+
+.league-table-summary-table th:nth-child(1) {
+    text-align: left;
+}
+
+.league-table-summary-table th:nth-child(2) {
+    text-align: left;
+    font-weight: 700;
+}
+
+.league-table-summary-table th:last-child,
+.league-table-summary-table td:last-child {
+    font-weight: 700;
+}
+
+.league-table-summary-table td {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-content: center;
+    border-bottom: 1px solid rgba(204, 171, 103, 0.5);
+    text-align: right;
+}
+
+/* First column */
+.league-table-summary-table td:nth-child(1) {
+    text-align: left;
+}
+
+/* Second column */
+.league-table-summary-table td:nth-child(2) {
+    text-align: left;
+}
+
+.league-table-summary-table tr {
+    background: transparent;
+}
+
+.league-table-summary-table-bg {
+    background: #161619;
+}
+
+.league-table-team-img {
+    vertical-align: middle;
+    margin-bottom: 3px;
+    width: 17px;
+    height: 17px;
+    margin-right: 0.3rem;
+}
+
+/* Apply sticky behavior to the first and second columns */
+.league-table-summary-table th:nth-child(1),
+.league-table-summary-table td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    background-color: #000;
+    z-index: 1;
+}
+
+.league-table-summary-table th:nth-child(1) {
+    background: #161619;
+}
+
+.league-table-summary-table th:nth-child(2),
+.league-table-summary-table td:nth-child(2) {
+    position: sticky;
+    left: 34px;
+    /* Adjust as needed based on the width of the first column */
+    background-color: #000;
+    z-index: 1;
+}
+
+.league-table-summary-table th:nth-child(2) {
+    background: #161619;
+}
+
+/* Optional: Ensure the headers stay above the sticky columns */
+.league-table-summary-table th {
+    z-index: 2;
+}
+
+.league-table-standing-tab-text {
+    color: #8b8b8b;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0.5rem 0 0.5rem;
+    display: inline-flex;
+    /* Ensure inline flex layout */
+    align-items: center;
+    /* Align text and count vertically */
+    gap: 0.25rem;
+    /* Adds spacing between text and count-button */
+}
+
+.league-table-text-highlight {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+@media only screen and (max-width: 475px) {
+
+    /* Pseudo-element to create the gradient effect */
+    .league-table-summary-table td:nth-child(2)::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 9px;
+        /* Width of the 'border' */
+        background: linear-gradient(90deg,
+                rgba(106, 81, 18, 0.51) 0%,
+                rgba(57, 46, 17, 0) 100%);
+    }
+
+    .league-table-summary-table {
+        width: 100%;
+    }
+
+    .league-table-summary-table-wrapper {
+        padding-left: 0;
+    }
+
+    .league-table-standing-tab {
+        justify-content: start;
+        width: 100%;
+    }
+
+    .league-table-standing-tab-wrapper {
+        padding-left: 0;
+    }
+}
+
+/* Styles from TableSummary.vue */
+.summary-table-wrapper {
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.summary-table {
+    width: 100%;
+    table-layout: inherit;
+    border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+    text-align: left;
+    padding: 1rem;
+}
+
+.summary-table th {
+    background: #2b2b32;
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.summary-table-th-dark-theme {
+    border-bottom: 1px solid rgba(204, 171, 103, 0.5);
+}
+
+.summary-table td {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+    align-content: start;
+}
+
+.summary-table-td-dark-theme {
+    color: #181818;
+    border-bottom: 1px solid rgba(132, 107, 45, 0.52);
+}
+
+.summary-table-td-light-theme {
+    color: #d9d9d9;
+    border-bottom: 1px solid rgba(204, 171, 103, 0.5);
+}
+
+.summary-table tr {
+    background: transparent;
+}
+
+.summary-table-bg {
+    background: #2b2b32;
+}
+
+@media only screen and (max-width: 475px) {
+    .summary-table-wrapper {
+        padding: 0;
+    }
+
+    .summary-table th,
+    .summary-table td {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        min-width: 200px;
+    }
+}
+
+/* Styles from MatchContainer2.vue */
+/* Container and card styling */
+.match-container-2 {
+    width: 100%;
+    height: 100%;
+}
+
+.match-container-2-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 1rem;
+    background: linear-gradient(104deg, #2b2b32 0%, #484141 93.5%);
+    padding-top: 0.7rem;
+    padding-bottom: 1.5rem;
+}
+
+/* Title styling */
+.match-container-2-title {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #ebc76e;
+}
+
+.match-container-2-league {
+    margin-left: 0.375rem;
+    display: inline-block;
+    max-width: 270px;
+    /* Adjust this width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* Live badge styling */
+.match-container-2-live-badge {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.625rem;
+    display: flex;
+    align-items: center;
+    height: 1.5rem;
+    padding: 0 0.375rem;
+}
+
+/* Match info styling */
+.match-container-2-match-info {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.match-container-2-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33.333%;
+}
+
+.match-container-2-team-left {
+    margin-left: 0.5rem;
+}
+
+.match-container-2-team-right {
+    margin-right: 0.5rem;
+}
+
+.match-container-2-team-logo {
+    height: 3rem;
+}
+
+.match-container-2-team-name {
+    margin-top: 0.375rem;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5rem;
+}
+
+.match-container-2-score {
+    text-align: center;
+    align-self: center;
+}
+
+.match-container-2-score-numbers {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ebc76e;
+    font-size: 26px;
+}
+
+.match-container-2-game-phase {
+    margin-top: 0.5rem;
+    color: #ebc76e;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/* Scroll list styling */
+.match-container-2-smooth-list {
+    display: grid;
+    grid-auto-columns: 361px;
+    padding-bottom: 34.5px;
+}
+
+.match-container-2-img-icon {
+    width: 43px;
+    height: 43px;
+}
+
+.match-footer-container-2 {
+    position: absolute;
+    bottom: 0;
+    width: -webkit-fill-available;
+    border-radius: 0px 0px 10px 10px;
+    background: linear-gradient(92deg,
+            rgba(141, 107, 60, 0.25) 0.21%,
+            rgba(103, 78, 43, 0.25) 53.22%,
+            rgba(217, 217, 217, 0.06) 98.38%);
+    backdrop-filter: blur(6px);
+}
+
+.match-content-wrapper-3-container-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+.match-container-2-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 339px;
+    height: 208px;
+    background: linear-gradient(104deg, #2b2b32 0%, #484141 93.5%);
+    stroke-width: 1px;
+    stroke: #ebc76e;
+    border-radius: 10px 8px 10px 8px;
+}
+
+.match-container-2-refresh-btn {
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #584f4f;
+    background: rgba(24, 24, 24, 0.5);
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.match-container-2-refresh-btn-text {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.match-container-2-no-match-text {
+    color: #d9d9d9;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5rem;
+}
+
+/* Styles from CustomButton2.vue */
+.custom-btn-2 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    min-width: 174px;
+    border-radius: 8px;
+    background: var(--ori,
+            linear-gradient(317deg, #ccab67 3.36%, #ae874b 46.99%, #fcf3ac 90.62%));
+    color: #181818;
+    text-align: center;
+    text-shadow: 0px 1px 1px #fcdd9a;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+/* Styles from CustomButton7.vue */
+.custom-btn-7-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-7-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.custom-btn-7 {
+    border-radius: 8px;
+    border: 1px solid #584f4f;
+    flex-shrink: 0;
+    color: #ebc76e;
+    min-width: 83px;
+    min-height: 37px;
+    border-radius: 8px;
+    border: 1px solid #584f4f;
+}
+
+.custom-btn-7-design-1 {
+    background: rgba(24, 24, 24, 0.5);
+}
+
+.custom-btn-7-design-2 {
+    background: var(--od,
+            linear-gradient(180deg, #484141 0%, rgba(72, 65, 65, 0.65) 100%));
+}
+
+.custom-btn-7-label-text-1 {
+    color: #ebc76e;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.custom-btn-7-label-text-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.custom-btn-7-label-text-2 img {
+    display: block;
+    max-width: 1rem;
+    height: auto;
+}
+
+.custom-button-7-label-disabled {
+    opacity: 0.5;
+}
+
+/* Styles from LiveScoreCaptionContent.vue */
+.ls-caption-aside-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 1rem 0 1rem;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+}
+
+.ls-caption-aside-content-title {
+    color: #ebc76e;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.ls-caption-aside-content-detail {
+    font-size: 14px;
+    margin: 0.5rem 0.1rem 0.5rem 0.1rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+    color: #d9d9d9;
+    text-align: left;
+    /* Limit the height to 320px */
+    /* Hide content that exceeds the max-height */
+    overflow: hidden;
+    /* Position relative for the pseudo-element */
+    position: relative;
+}
+
+.ls-caption-aside-content-open {
+    max-height: 5000px;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.ls-caption-aside-content-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.ls-caption-aside-content-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.ls-caption-aside-content-open::after {
+    display: none;
+}
+
+@media only screen and (max-width: 475px) {
+    .ls-caption-aside-content-title {
+        font-size: 16px;
+    }
+
+    .ls-caption-aside-content-detail {
+        font-size: 14px;
+    }
+}
+
+/* Styles from AsideContent.vue */
+.aside-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 1rem 0 1rem;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+}
+
+.aside-content-title {
+    color: #ebc76e;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: left;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.aside-content-detail {
+    font-size: 16px;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5rem;
+    font-weight: 300;
+    color: #d9d9d9;
+    text-align: left;
+    /* Limit the height to 320px */
+    /* Hide content that exceeds the max-height */
+    overflow: hidden;
+    /* Position relative for the pseudo-element */
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* Limit to 3 lines */
+    transition: -webkit-line-clamp 0.5s ease;
+}
+
+.aside-content-open {
+    max-height: 5000px;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.aside-content-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.aside-content-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.aside-content-open::after {
+    display: none;
+}
+
+@media only screen and (max-width: 475px) {
+    .aside-content-title {
+        font-size: 24px;
+    }
+
+    .aside-content-detail {
+        font-size: 14px;
+    }
+}
+
+/* Styles from LeagueSchedule.vue */
+.league-schedule-match-wrapper {
+    overflow-x: auto;
+    color: #d9d9d9;
+    width: 75%;
+    margin: auto;
+}
+
+.league-schedule-match-calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #1b1b1d;
+    color: #ebc76e;
+    font-size: 14px;
+    font-weight: 400;
+    gap: 1rem;
+    width: 75%;
+    margin: auto;
+}
+
+.league-schedule-match-month {
+    text-align: center;
+    padding: 1rem;
+    background: transparent;
+    font-size: 16px;
+    color: #ebc76e;
+    font-weight: 600;
+}
+
+.league-schedule-match-date {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(110deg, #ebc76e 0%, #ba8c4e 100%);
+    color: #2b2b32;
+    font-size: 16px;
+}
+
+.league-schedule-match-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.league-schedule-match-table td:nth-child(1) {
+    width: 60px;
+    text-align: center;
+}
+
+.league-schedule-match-table td:nth-child(3) {
+    width: 10px;
+}
+
+/* The second column takes the remaining available width */
+.league-schedule-match-table td:nth-child(2) {
+    width: auto;
+}
+
+.league-schedule-match-table td {
+    padding: 1rem 1rem 1rem 1rem;
+    border-bottom: 1px solid rgba(204, 171, 103, 0.5);
+}
+
+.league-schedule-team-flag-icn {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 475px) {
+    .league-schedule-match-table td:nth-child(1) {
+        width: 30px;
+    }
+
+    .league-schedule-match-wrapper {
+        width: 100%;
+    }
+
+    .league-schedule-match-calendar {
+        width: 100%;
+    }
+}
+
+/* Styles from LiveScoreTable.vue */
+.ls-table-bet-type-header {
+    display: flex;
+    background: #343237;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-table-score-time-info {
+    flex: 1;
+    display: flex;
+}
+
+.ls-table-bet-type-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ls-table-bet-type-col {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.ls-table-bet-type-col .ls-table-col-text {
+    width: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.ls-table-score-tag {
+    color: #ffa04e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.ls-table-time-tag {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 0.3rem;
+}
+
+.ls-table-match-event-container {
+    background: #181818;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ls-table-league-info {
+    flex: 1;
+    display: flex;
+}
+
+.ls-table-league-text {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ls-table-match-odds {
+    flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ls-table-match-odds-col {
+    display: flex;
+    justify-content: center;
+    /* padding: 0 7px 0 7px; */
+    min-width: 0;
+    text-align: center;
+}
+
+.ls-table-match-option {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.ls-table-table-wrapper {
+    display: flex;
+    justify-content: center;
+    /* Align table horizontally (optional) */
+    width: 55%;
+    /* Full width of the parent container */
+    margin: auto;
+}
+
+.ls-table-bet-type-table {
+    width: 55%;
+    justify-self: center;
+    /* Ensure the table takes the full width */
+    max-width: 100%;
+    /* Prevents the table from overflowing the container */
+    border-collapse: collapse;
+    /* Adjust table styling if needed */
+}
+
+.ls-table-match-option-button {
+    padding: 0;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .ls-table-table-wrapper {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .ls-table-bet-type-col .ls-table-col-text {
+        width: 63px;
+        font-size: 10px;
+    }
+
+    .ls-table-score-tag {
+        font-size: 11px;
+    }
+
+    .ls-table-time-tag {
+        font-size: 11px;
+    }
+
+    .ls-table-league-text {
+        font-size: 12px;
+    }
+
+    .ls-table-bet-type-table {
+        width: 100%;
+    }
+}
+
+/* Styles from CustomButton1.vue */
+.show-more-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.show-more-btn {
+    border-radius: 25px;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    color: #ebc76e;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    height: 46px;
+    min-width: 358px;
+}
+
+/* Styles from MatchOddsBox.vue */
+.match-odd-box {
+    min-width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+    border-radius: 8px;
+    border: 1px solid #2b2b32;
+    background: #181818;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+
+.match-odd-box-odd-text-1 {
+    color: #ae874b;
+    text-align: center;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.match-odd-box-odd-text-2 {
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 0.4rem 0 0.4rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .match-odd-box-odd-text-1 {
+        font-size: 9px;
+    }
+
+    .match-odd-box-odd-text-2 {
+        font-size: 11px;
+    }
+}
+
+/* Styles from LiveMatchByLeague.vue */
+.live-match-by-league-soccer-hot-match-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+/* Styles from NewsSection.vue */
+.news-section-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.news-section-btn-wrapper-with-scroll,
+.news-section-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem 0 1rem;
+}
+
+.news-section-happening-now-text-1 {
+    color: #ebc76e;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.news-section-happening-now-text-2 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.news-section-event-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+}
+
+.news-section-event-match-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+.news-section-happening-now-img {
+    width: 12px;
+    height: 12px;
+}
+
+.news-section-match-container-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 379px;
+    height: 208px;
+    background: linear-gradient(104deg, #2b2b32 0%, #484141 93.5%);
+    stroke-width: 1px;
+    stroke: #ebc76e;
+    border-radius: 10px 8px 10px 8px;
+}
+
+.news-section-refresh-btn {
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid #584f4f;
+    background: rgba(24, 24, 24, 0.5);
+    padding: 1rem 2rem 1rem 2rem;
+}
+
+.news-section-refresh-btn-text {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.news-section-match-event-detail-text {
+    font-size: 16px;
+    margin: 0 1rem 1rem 1rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+    color: #d9d9d9;
+    text-align: left;
+}
+
+@media only screen and (max-width: 475px) {
+    .news-section-btn-wrapper {
+        justify-content: start;
+    }
+
+    .news-section-btn-wrapper-with-scroll {
+        justify-content: start;
+        overflow: auto;
+    }
+}
+
+/* Styles from EventMatchContainer.vue */
+.event-match-container {
+    flex-direction: column;
+    display: flex;
+    position: relative;
+    max-width: 299px;
+    min-height: 193px;
+    flex-shrink: 0;
+    background: #151518;
+    stroke-width: 1.5px;
+    stroke: rgba(0, 0, 0, 0);
+    border-radius: 10px 8px 10px 8px;
+    padding-bottom: 1rem;
+}
+
+.event-match-header-wrapper-bg {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: contents;
+    z-index: 0;
+    position: absolute;
+    background-size: cover;
+    justify-content: center;
+    background-position: center center;
+}
+
+.event-match-header-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.event-match-content-container {
+    position: absolute;
+    top: 57px;
+    width: -webkit-fill-available;
+}
+
+.event-match-content-wrapper-base {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-match-content-wrapper-1 {
+    padding: 0.4rem 0.7rem 0.4rem 0.7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.event-match-content-wrapper-2 {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    gap: 0.5rem;
+}
+
+.event-match-content-wrapper-2 .event-team-text {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.event-match-content-wrapper-2 .event-score-text {
+    color: #ebc76e;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.event-match-content-wrapper-3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    gap: 0.7rem;
+    padding-top: 0.7rem;
+}
+
+.event-match-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0.7rem 0 0 0.7rem;
+}
+
+.event-match-header-bg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    border-radius: 10px 8px 0px 0px;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.5) 0%,
+            rgba(0, 0, 0, 0.5) 100%);
+    width: 100%;
+    height: 54px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.event-match-header-logo {
+    display: flex;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 54px;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.event-title {
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.event-tournament-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.3rem;
+}
+
+.event-tournament-text {
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-right: 0.5rem;
+    padding-left: 0.3rem;
+    max-width: 80%;
+}
+
+.event-img-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@media only screen and (max-width: 475px) {
+    .event-match-content-wrapper-1 {
+        font-size: 12px;
+    }
+
+    .event-match-content-wrapper-2 .event-team-text {
+        font-size: 12px;
+    }
+
+    .event-match-content-wrapper-2 .event-score-text {
+        font-size: 22px;
+    }
+
+    .event-title {
+        font-size: 12px;
+    }
+
+    .event-tournament-text {
+        font-size: 12px;
+    }
+}
+
+/* Styles from ArticleContainer.vue */
+.article-container {
+    display: block;
+    position: relative;
+    max-width: 175px;
+    max-height: auto;
+    border-radius: 8px;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    transition: transform 0.2s ease-in;
+}
+
+.article-container:hover {
+    transform: scale(1.05);
+}
+
+.article-img {
+    max-width: 175px;
+    max-height: 169px;
+    border-radius: 8px 8px 0 0;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.article-content-wrapper {
+    position: relative;
+    padding: 0.5rem;
+}
+
+.article-content-text {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+}
+
+.article-open-link-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    z-index: 1;
+}
+
+.article-date-wrapper {
+    background: linear-gradient(270deg,
+            rgba(0, 0, 0, 0) 8.06%,
+            rgba(49, 40, 17, 0.71) 48.61%,
+            #846b2d 100%);
+    color: #ebc76e;
+    font-size: 14px;
+    height: 21px;
+    left: 0;
+    line-height: 10px;
+    position: absolute;
+    top: -24px;
+    width: 100%;
+    align-content: center;
+}
+
+/* Styles from CustomButton4.vue */
+.custom-btn-4-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.custom-btn-4 {
+    border-radius: 8px;
+    border: 1px solid #8b6832;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    flex-shrink: 0;
+    padding: 0.6rem 0 0.6rem 0.8rem;
+    min-width: 155px;
+    color: #ebc76e;
+}
+
+.custom-btn-4-label-text-1 {
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin-top: 0.8rem;
+}
+
+.custom-btn-4-label-text-2 {
+    color: #ebc76e;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+@media only screen and (max-width: 475px) {
+    .custom-btn-4 {
+        min-width: 115px;
+    }
+}
+
+/* Styles from CustomButton3.vue */
+.custom-btn-3 {
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 18px;
+    padding: 1rem;
+}
+
+.custom-btn-3-with-min-width {
+    min-width: 174px;
+}
+
+.custom-btn-3-selected {
+    background: var(--ori,
+            linear-gradient(317deg, #ccab67 3.36%, #ae874b 46.99%, #fcf3ac 90.62%));
+    color: #181818;
+    text-shadow: 0px 1px 1px #fcdd9a;
+    font-weight: 500;
+}
+
+.custom-btn-3-notSelected {
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    color: #ae874b;
+    font-weight: 400;
+}
+
+.custom-btn-3-text {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .custom-btn-3-text {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+/* Styles from AccordionH3Style2.vue */
+.h3style2-disabled summary {
+    pointer-events: none;
+    /* prevents click events */
+}
+
+.h3style2-accordion {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.h3style2-accordion-text {
+    margin-left: 1rem;
+    padding-right: 1.3rem;
+    color: #ccab67;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.h3style2-accordion-text.expand {
+    color: #ebc76e;
+}
+
+.h3style2-accordion-indent {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    background: linear-gradient(180deg, #ebc76e 0%, #85713e 100%);
+    width: 4px;
+    height: 10px;
+}
+
+.h3style2-accordion-panel {
+    padding: 0 18px;
+    background-color: transparent;
+    overflow: hidden;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h3style2-open {
+    max-height: 100%;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.h3style2-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.h3style2-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.h3style2-open::after {
+    display: none;
+}
+
+.h3style2-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h3style2-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h3style2-accordion-panel summary::marker {
+    display: none;
+}
+
+.h3style2-accordion-panel h3 {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.h3style2-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.h3style2-clamped {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* Limit to 3 lines */
+    overflow: hidden;
+}
+
+/* Expanded state (when openPanel is true) */
+.h3style2-expanded {
+    -webkit-line-clamp: unset;
+    /* Remove line clamp */
+    display: block;
+}
+
+/* Styles from AccordionH3.vue */
+.h3style1-accordion {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.h3style1-accordion-text {
+    margin-left: 2.3rem;
+    padding-right: 1.3rem;
+    color: #ccab67;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.h3style1-expand {
+    color: #ebc76e;
+}
+
+.h3style1-accordion-panel {
+    margin: 0;
+    background-color: transparent;
+    overflow: hidden;
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h3style1-accordion-h3-open::after {
+    display: none;
+}
+
+.h3style1-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h3style1-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h3style1-accordion-panel summary::marker {
+    display: none;
+}
+
+.h3style1-accordion-panel h3 {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.h3style1-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    margin-left: 2.3rem;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.h3style1-flip-vertical {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.h3style1-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+.h3style1-accordion-icn {
+    display: flex;
+    position: absolute;
+    left: 1rem;
+    top: 3px;
+}
+
+.h3style1-accordion-break-line {
+    border-bottom: 1px solid #ddd;
+    border-bottom-color: rgba(132, 107, 45, 0.52);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+}
+
+.h3style1-accordion-h3-open {
+    max-height: 100%;
+    transition: max-height 1s ease;
+}
+
+.h3style1-accordion-h3-close {
+    transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+@media only screen and (min-width: 475px) {
+    .h3style1-accordion-h4-margin {
+        margin-left: 2rem;
+    }
+}
+
+/* Styles from LeagueSoccerLayout.vue */
+.football-league-btn-section {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.football-league-btn-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align-last: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .football-league-btn-wrapper {
+        justify-content: start;
+    }
+}
+
+/* Styles from BetBoost.vue */
+.bet-boost-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 1rem;
+}
+
+.bet-boost-wrapper-2 {
+    display: flex;
+    justify-content: center;
+}
+
+.bet-boost-container {
+    padding: 1rem 1rem 2rem 1rem;
+    flex-shrink: 0;
+    fill: #181818;
+    stroke-width: 1px;
+    stroke: #ccab67;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    background-image: url("/img/bet-boost-container.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 8px 8px 0;
+    gap: 0.5rem;
+    min-width: 400px;
+}
+
+.bet-boost-item-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 1rem 0 1rem;
+}
+
+.bet-boost-item-container-league-name {
+    margin: 0.1rem 0 0.3rem 0;
+    color: #8b8b8b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.bet-boost-item-container-team-match {
+    margin: 0.1rem 0 0.3rem 0;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.bet-boost-item-container-team-match-vs {
+    color: #ae874b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0.3rem 0 0.3rem;
+}
+
+.bet-boost-item-container-match-score {
+    margin: 0.1rem 0 0.1rem 0;
+    flex-grow: 1;
+    color: #ebc76e;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.bet-boost-item-container-match-odds {
+    color: #8b8b8b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.bet-boost-break-line {
+    height: 1px;
+    background: #29272a;
+    margin: 0.5rem 0 0.3rem 0;
+}
+
+.bet-boost-btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 3rem 1.2rem 3rem;
+    border-radius: 15px;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    color: #ffdbaa;
+    font-size: 16px;
+}
+
+.bet-boost-btn span,
+.bet-boost-btn img {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bet-boost-img {
+    height: 40px;
+    z-index: 1;
+}
+
+.bet-boost-odds-from-text {
+    text-decoration: line-through;
+    margin-left: 0.3rem;
+}
+
+.bet-boost-odds-to-text {
+    color: #fff;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.bet-boost-odds-img {
+    width: 20px;
+    /* Set icon size */
+    height: 20px;
+    margin: 0 5px;
+}
+
+.bet-boost-bg {
+    background: linear-gradient(100deg, #ebc76e 0%, #ba8c4e 100%);
+    padding-bottom: 1rem;
+}
+
+.bet-boost-container {
+    padding: 1rem 1rem 2rem 1rem;
+    flex-shrink: 0;
+    fill: #181818;
+    stroke-width: 1px;
+    stroke: #ccab67;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    background-image: url("/img/bet-boost-container.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 8px 8px 0;
+    gap: 0.5rem;
+    min-width: 400px;
+}
+
+.betboost-content {
+    color: #000;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .bet-boost-container {
+        min-width: 250px;
+    }
+}
+
+/* Styles from CustomButton6.vue */
+.custom-btn-6 {
+    border-radius: 8px;
+    border: 1px solid #8b6832;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    flex-shrink: 0;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: #ebc76e;
+}
+
+.custom-btn-6-label-text-1 {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+/* Styles from AccordionH4.vue */
+.h4style1-accordion {
+    display: flex;
+    width: 100%;
+    padding: 0.8rem 0 0.8rem 0;
+    border-radius: 5px;
+    background: linear-gradient(90deg,
+            rgba(235, 199, 110, 0.2) 0%,
+            rgba(133, 113, 62, 0.2) 100%);
+    cursor: pointer;
+    position: relative;
+}
+
+.h4style1-accordion-text {
+    margin-left: 2.3rem;
+    padding-right: 1.3rem;
+    color: #ccab67;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.h4style1-expand {
+    color: #ebc76e;
+}
+
+.h4style1-accordion-panel {
+    margin: 0 1rem 0 0;
+    background-color: transparent;
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h4style1-accordion-h4-open::after {
+    display: none;
+}
+
+.h4style1-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h4style1-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h4style1-accordion-panel summary::marker {
+    display: none;
+}
+
+.h4style1-accordion-panel h4 {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.h4style1-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-left: 2.3rem;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.h4style1-flip-vertical {
+    transform: rotate(-180deg);
+    transition: transform 0.3s ease;
+}
+
+.h4style1-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+.h4style1-accordion-icn {
+    display: flex;
+    position: absolute;
+    left: 1rem;
+    top: 40%;
+}
+
+.h4style1-accordion-h4-open {
+    max-height: 100%;
+    transition: max-height 1s ease;
+}
+
+.h4style1-accordion-h4-close {
+    transition: max-height 0.5s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* Styles from AccordionH4Style2.vue */
+.h4style2-disabled summary {
+    pointer-events: none;
+    /* prevents click events */
+}
+
+.h4style2-accordion {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+}
+
+.h4style2-accordion-text {
+    margin-left: 1rem;
+    padding-right: 1.3rem;
+    color: #ccab67;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.h4style2-expand {
+    color: #ebc76e;
+}
+
+.h4style2-accordion-indent {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background: linear-gradient(180deg, #ebc76e 0%, #85713e 100%);
+    width: 3px;
+    height: 9px;
+}
+
+.h4style2-accordion-panel {
+    padding: 0 18px;
+    background-color: transparent;
+    overflow: hidden;
+    /* Add the fade shadow */
+    /* Remove the fade shadow when expanded */
+    /* Remove the arrow in the summary */
+}
+
+.h4style2-open {
+    max-height: 100%;
+    /* Fully expand */
+    transition: max-height 0.5s ease;
+}
+
+.h4style2-close {
+    max-height: 4.5rem;
+    /* Equivalent to 3 lines */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.h4style2-close::after {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+}
+
+.h4style2-open::after {
+    display: none;
+}
+
+.h4style2-accordion-panel summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.h4style2-accordion-panel summary::-webkit-details-marker {
+    display: none;
+}
+
+.h4style2-accordion-panel summary::marker {
+    display: none;
+}
+
+.h4style2-accordion-panel h4 {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.h4style2-accordion-panel-content {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* Limit to 3 lines */
+    transition: -webkit-line-clamp 0.5s ease;
+}
+
+.h4style2-flip-vertical {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.h4style2-flip-vertical-transition {
+    transition: transform 0.3s ease;
+}
+
+/* Styles from GameBannerList.vue */
+.game-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 90%;
+    /* Optional: Limit the width of the banner container */
+    margin: 0 auto;
+    /* Center the container */
+}
+
+.game-container-img-item {
+    width: 100%;
+}
+
+@media only screen and (max-width: 475px) {
+    .game-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Styles from LiveMatch.vue */
+.live-match-title {
+    color: #181818;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding-top: 1rem;
+}
+
+.live-match-open-match-btn {
+    margin-right: 0.3rem;
+}
+
+.live-match-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.live-match-league-img {
+    border-radius: 3px;
+    max-width: 41.754px;
+    max-height: 34px;
+    flex-shrink: 0;
+    margin-top: 0.7rem;
+}
+
+.live-match-league-title {
+    color: #d9d9d9;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.live-match-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.live-match-container {
+    margin: 0 1rem 1rem 1rem;
+    min-width: 264px;
+    flex-shrink: 0;
+    fill: #181818;
+    stroke-width: 1px;
+    stroke: #ccab67;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    background-image: url("/img/bet-boost-container.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 8px 8px 0;
+}
+
+.live-match-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    color: #ffdbaa;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.live-match-img {
+    width: 95px;
+    height: 29.9px;
+}
+
+.live-match-odds-from-text {
+    text-decoration: line-through;
+    margin-left: 0.3rem;
+}
+
+.live-match-team-text {
+    color: #d9d9d9;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0.3rem 0 0.3rem 0;
+}
+
+.live-match-score-text {
+    color: #ebc76e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.live-match-state-text {
+    color: #ebc76e;
+    font-size: 14px;
+}
+
+.live-match-team-score-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.live-match-team-flag-icn {
+    max-width: 18px;
+    max-height: 18px;
+    margin-left: 0.5rem;
+    margin-right: 0.3rem;
+    vertical-align: middle;
+}
+
+.live-match-bg {
+    background: linear-gradient(100deg, #ebc76e 0%, #ba8c4e 100%);
+    padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 475px) {
+    .live-match-title {
+        font-size: 14px;
+    }
+
+    .live-match-league-title {
+        font-size: 14px;
+    }
+
+    .live-match-state-text {
+        font-size: 14px;
+    }
+
+    .live-match-team-text {
+        font-size: 12px;
+    }
+
+    .live-match-score-text {
+        font-size: 12px;
+    }
+
+    .live-match-btn {
+        font-size: 14px;
+    }
+}
+
+/* Styles from Breadcrumb.vue */
+.breadcrumb-wrapper {
+    background: linear-gradient(90deg, #484141 0%, rgba(72, 65, 65, 0) 100%);
+    padding: 1rem;
+    line-height: 1.5rem;
+    font-size: 14px;
+}
+
+.breadcrumb-main-menu-text {
+    color: #ebc76e;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.breadcrumb-sub-menu-text {
+    color: #ebc76e;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.breadcrumb-arrow {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 7px;
+}
+
+@media only screen and (max-width: 475px) {
+    .breadcrumb-wrapper {
+        padding: 0.5rem;
+        font-size: 12px;
+    }
+
+    .breadcrumb-main-menu-text {
+        font-size: 12px;
+    }
+
+    .breadcrumb-sub-menu-text {
+        font-size: 12px;
+    }
+
+    .breadcrumb-arrow {
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+        width: 5px;
+    }
+}
+
+/* Styles from LeagueScheduleFixtureContent.vue */
+.league-schedule-fixture-content-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem 0 1rem;
+}
+
+.league-schedule-fixture-content-btn-style {
+    min-height: 44px;
+}
+
+@media only screen and (max-width: 475px) {
+    .league-schedule-fixture-content-btn-wrapper {
+        justify-content: start;
+    }
+
+    .league-schedule-fixture-content-btn-style {
+        height: 96px;
+    }
+}
+
+/* Styles from CustomButton1.vue */
+.custom-btn-1-show-more-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.custom-btn-1-show-more-btn {
+    border-radius: 25px;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    color: #ebc76e;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    height: 46px;
+    /* min-width: 358px; */
+}
+
+/* Styles from CustomButton8.vue */
+.custom-btn-8-container {
+    border-radius: 6px;
+    border: 1px solid var(--Linear, #8b6832);
+    background: var(--Linear,
+            linear-gradient(227deg, #8b6832 12.69%, #fcdd9a 51.04%, #966b2a 87.06%));
+    padding: 0 2rem;
+    display: flex;
+    /* Enable flexbox */
+    align-items: center;
+    /* Center content vertically */
+    justify-content: center;
+    /* Center content horizontally */
+    gap: 0.5rem;
+    /* Add space between the image and text */
+    height: 40px;
+}
+
+.custom-btn-8-text {
+    color: #0a0425;
+    text-align: center;
+    text-shadow: 0px 1px 1px rgba(255, 246, 219, 0.8);
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 475px) {
+    .custom-btn-8-container {
+        padding: 0 1.3rem;
+    }
+}
+
+/* custom css */
+.list-dashed {
+    list-style-type: none;
+    /* Remove default bullet points */
+    padding-left: 0;
+    /* Optional: Adjust padding */
+}
+
+.list-dashed li::before {
+    content: "- ";
+    /* Add a dash before each item */
+}
+
+.livescoreDateClass {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    background: #1b1b1d;
+}
+
+.livescoreDateClassHover:hover {
+    color: #ebc76e;
+    cursor: pointer;
+}
+
+.livescoreDateLine {
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+.selectedDateClass {
+    color: #ebc76e;
+}
+
+.livescoreDateFontClass {
+    font-size: 12px;
+}
+
+.calendarFavClass {
+    margin-right: 20px;
+}
+
+@media only screen and (max-width: 475px) {
+    .livescoreDateFontClass {
+        font-size: 12px;
+    }
+
+    .calendarFavClass {
+        margin-right: 10px;
+    }
+}
+
+.custom-date-picker {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.date-input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.calendar-icon {
+    cursor: pointer;
+}
+
+.livescoreDateColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.livescore-datepicker-class {
+    display: flex;
+    /* Enables flexbox layout */
+    flex-direction: row;
+    /* Align items in a row (default for flexbox) */
+    margin-right: 1rem;
+    /* Adds a right margin of 1rem (16px) */
+}
+
+.selected-livescore-date {
+    color: #ebc76e;
+}
+
+.not-selected-livescore-date {
+    color: #b6b6b6;
+}
+
+.selected-livescore-date-bold {
+    font-weight: bold;
+}
+
+.leagueClass {
+    color: #ebc76e;
+    font-size: 14px;
+}
+
+.leagueLine {
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+@media only screen and (max-width: 475px) {
+    .leagueClass {
+        font-size: 12px;
+    }
+}
+
+.not-match-class {
+    color: #e5eaf3;
+    font-size: 0.75rem;
+    margin: 0.5rem;
+}
+
+.livescore-match-league-col-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.teamImg {
+    width: 20px;
+    height: 20px;
+}
+
+.livescoreItemHover:hover {
+    background: #393940;
+}
+
+.runningliveTab {
+    width: 6px;
+    height: 62px;
+    flex-shrink: 0;
+}
+
+.liveBox {
+    width: 33px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 3px 3px 3px 3px;
+    background: #ffc6ca;
+    color: #f00;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 475px) {
+    .livescore-team-class {
+        font-size: 12px;
+    }
+}
+
+.livescore-team-class {
+    display: flex;
+    align-items: center;
+    background-color: #181818;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 14px;
+}
+
+.livescore-running-bg {
+    background-color: #ef2c45;
+}
+
+.livescore-running-text {
+    color: #ef2c45;
+    font-weight: bold;
+}
+
+.livescore-not-running-text {
+    color: #b6b6b6;
+}
+
+.livescore-match-date-col-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.livescore-match-date-col-container-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.livescore-match-team-col-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.livescore-match-team-col-container-item {
+    display: flex;
+    align-items: center;
+}
+
+.livescore-match-score-col-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.btnClass {
+    background: linear-gradient(90deg,
+            rgba(255, 219, 131, 0.5),
+            hsla(0, 0%, 71%, 0.2)) !important;
+    border: unset;
+    color: #fff;
+    overflow: hidden;
+}
+
+.btnClass:hover {
+    background: linear-gradient(90deg,
+            rgba(255, 219, 131, 0.8),
+            hsla(0, 0%, 71%, 0.5)) !important;
+}
+
+.livescore-custom-btn-class2 {
+    background: #e5c87b;
+    border: unset;
+    color: #2b2b32;
+    overflow: hidden;
+    height: 30px;
+    font-size: 12px;
+}
+
+.livescore-custom-btn-class3 {
+    height: 30px;
+    font-size: 12px;
+}
+
+.livescore-custom-btn-class3:hover {
+    background: #e5c87b;
+    border: unset;
+    color: #2b2b32;
+}
+
+.livescore-view-more-btn {
+    display: flex;
+    justify-content: center;
+    /* flex-grow: 1; */
+}
+
+.livescore-view-more-btn-1 {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.livescore-view-more-btn-2 {
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.livescore-view-more-btn-3 {
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    border: 1px solid #b6b6b6;
+    color: #b6b6b6;
+}
+
+.game-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0.5rem;
+    padding-top: 1rem;
+    max-width: 298px;
+}
+
+.game-card-item {
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.game-card-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.game-card-attributes {
+    padding: 15px;
+    font-size: 14px;
+    color: #d9d9d9;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.game-card-attributes p {
+    display: flex;
+    gap: 5px;
+}
+
+.game-card-attributes-title {
+    color: #ebc76e;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    min-width: 70px;
+    /* Ensures consistent width for all labels */
+}
+
+.game-card-attributes-bullet {
+    color: #ebc76e;
+}
+
+.game-card-item-details {
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    margin: 0;
+    padding: 10px 20px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 -1px 2px #584f4f;
+}
+
+.game-card-item-details summary {
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    color: #ccab67;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+}
+
+.qa-label-question-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.qa-label-question {
+    font-size: 14px;
+    font-weight: 400;
+    color: #ebc76e;
+    padding-top: 0.8rem;
+    /* line-height: 1.5rem; */
+}
+
+.qa-label-answer-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.qa-label-answer {
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    padding-bottom: 0.5rem;
+    line-height: 1.5rem;
+}
+
+.game-card-item-details p {
+    margin-top: 0.3rem;
+    font-size: 14px;
+}
+
+.game-card-item-details p+br {
+    display: block;
+}
+
+/* Reset the default marker */
+.game-card-item-details summary {
+    list-style: none;
+    /* Remove default triangle icon */
+    display: flex;
+    align-items: center;
+    /* Align text with icon */
+}
+
+.game-card-item-details summary::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    background: url("/img/icn-h3-indent.avif") no-repeat center center;
+    background-size: contain;
+    /* Ensures the image scales properly */
+    transition: transform 0.3s ease;
+}
+
+/* Change the icon when the details element is open */
+.game-card-item-details[open] summary::before {
+    transform: rotate(90deg);
+    transition: transform 0.3s ease;
+}
+
+.game-card-container2 {
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    gap: 15px;
+    padding: 20px;
+    /* Adjust for responsiveness */
+    margin: 0 auto;
+    position: relative;
+    max-width: 358px;
+}
+
+.game-card-container2-item {
+    background: #181818;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+
+    z-index: 1;
+    box-shadow: -2px -2px 6px #ccab67;
+    min-width: 358px;
+    min-height: 173px;
+}
+
+@media only screen and (max-width: 475px) {
+    .game-card-container2-item {
+        min-width: 328px;
+    }
+}
+
+.game-card-container2-item:hover {
+    transform: scale(1.05);
+}
+
+.game-card-container2-item img {
+    width: 50%;
+    height: auto;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    border-radius: 8px;
+    max-width: 60px;
+}
+
+/* .game-card-container2-item-card-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    padding: 1rem 1rem 0 1rem;
+  } */
+
+.game-card-container2-item-logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    min-width: 63px;
+    height: auto;
+    z-index: 2;
+}
+
+.game-card-container2-item-card-content {
+    padding: 15px;
+}
+
+.game-card-container2-item-game-type {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+
+.game-card-container2-item-provider-name {
+    font-size: 1em;
+    color: #777;
+}
+
+.game-card-container2-item-stakes {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #2cd4c9;
+}
+
+.game-card-container2-item-description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #d9d9d9;
+}
+
+.match-score-summary-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.match-score-summary-container-team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f5f5f5;
+    width: 30%;
+}
+
+.match-score-summary-container-team-text {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.livescoreDetailHeaderBox {
+    display: flex;
+    align-items: center;
+    height: 41px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, rgb(43, 43, 50) 0%, rgb(72, 65, 65) 100%);
+}
+
+.livescoreTab {
+    flex-shrink: 0;
+    background: #151518;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: #b6b6b6;
+    font-size: 16px;
+    column-gap: 2rem;
+}
+
+.livescoreTabItemLine {
+    border: solid #ccab67;
+    border-width: 0 0 2px;
+    padding-bottom: 8px;
+}
+
+.livescoreTabItemLineNotSelected {
+    padding-bottom: 8px;
+}
+
+.livescoreTabItem {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.livescoreTabItem:hover {
+    color: #ccab67;
+}
+
+.livescoreTabHorizontalLine {
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+.livescore-match-detail-selected-tab {
+    color: #ccab67;
+    font-weight: bold;
+}
+
+.livescore-match-detail-selected-tab-margin {
+    margin-left: 1rem;
+}
+
+.custom-btn-5-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-5 {
+    border-radius: 8px;
+    border: 1px solid #8b6832;
+    background: var(--linear-bar,
+            linear-gradient(90deg, #2b2b32 0%, #484141 100%));
+    flex-shrink: 0;
+    padding: 0.6rem 3rem 0.6rem 3rem;
+    color: #ebc76e;
+}
+
+.custom-btn-5-label-text-1,
+.custom-btn-5-label-text-2 {
+    color: #ebc76e;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.game-card-container3-card {
+    background: var(--od,
+            linear-gradient(180deg, #484141 0%, rgba(72, 65, 65, 0.65) 100%));
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 228px;
+}
+
+.game-card-container3-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.game-card-container3-empty-card {
+    background: #8b8b8b;
+    width: 128px;
+    border-radius: 8px;
+}
+
+.game-card-container3-card:hover {
+    transform: translateY(-5px);
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+}
+
+.game-card-container3-card p {
+    margin: 0;
+    font-size: 14px;
+    color: #ebc76e;
+    margin-top: 10px;
+}
+
+.livescore-league-detail-header-box {
+    height: 41px;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, rgb(43, 43, 50) 0%, rgb(72, 65, 65) 100%);
+    display: flex;
+    align-items: center;
+}
+
+.livescore-league-detail-tab {
+    flex-shrink: 0;
+    background: #151518;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    color: #b6b6b6;
+    font-size: 0.875rem;
+    column-gap: 1.5rem;
+}
+
+.livescore-league-detail-tab-item .line {
+    border: solid #ccab67;
+    border-width: 0 0 2px;
+    padding-bottom: 8px;
+}
+
+.livescore-league-detail-tab-item .line-not-selected {
+    padding-bottom: 8px;
+}
+
+.livescore-league-detail-tab-item {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.livescore-league-detail-tab-item:hover {
+    color: #ccab67;
+}
+
+.livescore-league-detail-tab-item.first-tab {
+    margin-left: 1rem;
+}
+
+.livescore-league-detail-tab-item.text-selected {
+    color: #ccab67;
+    font-weight: bold;
+}
+
+.livescore-fixture-title {
+    padding: 1rem;
+    color: #b6b6b6;
+    font-size: 0.875rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.livescore-fixture-no-record {
+    color: #fff;
+    padding: 1rem;
+    font-size: 0.875rem;
+}
+
+.livescore-fixture-text-date {
+    display: flex;
+    color: #b6b6b6;
+    font-size: 0.875rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.livescore-league-standing-table-wrapper .table-title {
+    color: #ebc76e;
+    font-size: 14px;
+}
+
+.livescore-league-standing-table-wrapper .table-content {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.livescore-league-standing-table-wrapper {
+    overflow-x: auto;
+    width: 100%;
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
+        background: black;
+
+        td,
+        th {
+            vertical-align: top;
+            text-align: left;
+            width: 33px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 20px;
+            text-align: center;
+            border-bottom: 1px solid #846b2d86;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 200px;
+            text-align: left;
+        }
+    }
+
+    .livescore-league-standing-table-fix:first-child {
+        text-align: left;
+        width: 100px;
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 475px) {
+    .livescore-league-standing-table-fix {
+        position: sticky;
+        background: black;
+    }
+
+    .livescore-league-standing-table-fix:first-child {
+        left: 0;
+        z-index: 1;
+        text-align: left;
+        width: 80px;
+        padding-left: 10px;
+    }
+
+    .livescore-league-standing-table-wrapper .table-title {
+        font-size: 12px;
+    }
+
+    .livescore-league-standing-table-wrapper .table-content {
+        font-size: 12px;
+    }
+}
+
+/* General Styles */
+.no-events {
+    color: #fff;
+    padding: 1rem;
+    font-size: 0.875rem;
+}
+
+.event-container {
+    margin-top: 1rem;
+}
+
+/* Event Line Styles */
+.event-line {
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+.event-line-container.no-player {
+    background-color: #2b2b32;
+}
+
+/* Event Row Styles */
+.livescore-match-detail-event-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+/* Time Info */
+.livescore-match-detail-event-row .time-info {
+    flex: 0 0 120px;
+    max-width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    word-wrap: break-word;
+}
+
+/* Team Information */
+.livescore-match-detail-event-row .team-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 120px;
+}
+
+.livescore-match-detail-event-row .team-icon {
+    width: 18px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.livescore-match-detail-event-row .player-name {}
+
+.livescore-match-detail-event-row .goal-info {
+    font-weight: bold;
+}
+
+/* Team Colors */
+.team {
+    color: #fff;
+}
+
+.team-hide {
+    color: #000;
+}
+
+/* Non-Player Event */
+.non-player-event {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    color: #ebc76e;
+}
+
+@media only screen and (max-width: 475px) {
+    .livescore-match-detail-event-row .team-info {
+        min-width: 70px;
+    }
+}
+
+@media only screen and (max-width: 275px) {
+    .livescore-match-detail-event-row .team-info {
+        min-width: 30px;
+    }
+}
+
+.livescore-match-detail-info-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.5rem;
+    gap: 0.5rem;
+}
+
+.livescore-match-detail-info-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 1.5rem;
+}
+
+.livescore-match-detail-info-item .info-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.livescore-match-detail-info-label {
+    flex: 0 0 85px;
+    white-space: nowrap;
+    font-size: 14px;
+    margin-left: 1rem;
+    color: #bdbdbd;
+}
+
+.livescore-match-detail-info-label-value {
+    margin-left: 0.5rem;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.move-site-btn {
+    border-radius: 10px;
+    background: #ebc76e;
+    max-width: 100%;
+    cursor: pointer;
+    align-self: center;
+    color: #181818;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    align-items: center;
+}
+
+.move-site-btn:hover {
+    transform: scale(1.05);
+}
+
+@media only screen and (max-width: 475px) {
+    .move-site-btn {
+        max-width: 358px;
+    }
+}
+
+/* No Stats Message */
+.livescore-match-details-stats-no-stats {
+    color: #fff;
+    padding: 1rem;
+    font-size: 14px;
+}
+
+/* Stats Row */
+.livescore-match-details-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    color: #bdbdbd;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    margin: 0 0.5rem;
+}
+
+.livescore-match-details-stats-row .focus-text {
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Progress Row */
+.livescore-match-details-stats-progress-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem;
+}
+
+/* Home Progress */
+.livescore-match-details-stats-home-progress {
+    width: 50%;
+    flex: 0 0 auto;
+    margin-right: 3px;
+    transform: scaleX(-1);
+}
+
+/* Away Progress */
+.livescore-match-details-stats-away-progress {
+    width: 50%;
+    flex: 0 0 auto;
+    margin-left: 3px;
+}
+
+/* Custom Progress Bar */
+.livescore-match-details-stats-custom-progress {
+    width: 100%;
+    height: 9px;
+    background: #2b2b32;
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.livescore-match-details-stats-custom-progress .progress-bar {
+    height: 8px;
+    background: #7e7b7b;
+}
+
+.livescore-match-details-stats-custom-progress .progress-bar.focus-bar {
+    background: #ebc76e;
+}
+
+.livescore-substitution-player-header {
+    color: #b6b6b6;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 2rem 1rem 1rem 1rem;
+    text-transform: uppercase;
+}
+
+.livescore-substitution-row {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.livescore-substitution-player-home {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    text-align: left;
+    width: 50%;
+}
+
+.livescore-substitution-player-away {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    text-align: right;
+    width: 50%;
+}
+
+.livescore-substitution-player-away {
+    flex-direction: row-reverse;
+}
+
+.livescore-substitution-player-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+    border-radius: 5px;
+    border: 1px solid rgba(226, 226, 226, 0.51);
+}
+
+.livescore-substitution-player-number {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14;
+}
+
+.livescore-substitution-player-name {
+    color: #fff;
+    font-size: 14px;
+    gap: 0.5rem;
+    line-height: 1.5rem;
+    align-items: center;
+}
+
+.livescore-substitution-player-event-img {
+    height: 15px;
+    width: 15px;
+    flex-shrink: 0;
+    margin: 0 0.2rem;
+    vertical-align: text-bottom;
+}
+
+.livescore-substitution-player-breakline {
+    margin: 0.75rem 0;
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+.livescore-substitution-player-item {
+    margin: 0 1rem;
+}
+
+.livescore-substitution-header {
+    color: #b6b6b6;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 2rem 1rem 1rem 1rem;
+    text-transform: uppercase;
+}
+
+.livescore-no-substitution-message {
+    color: #fff;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+}
+
+.livescore-substitution-item {
+    margin: 0 1rem;
+}
+
+.livescore-substitution-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.livescore-substitution-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.livescore-home-substitution,
+.livescore-away-substitution {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.livescore-substitution-time {
+    color: #fff;
+    font-size: 14px;
+}
+
+.livescore-substitution-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.livescore-substitution-player-out {
+    color: #b6b6b6;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.livescore-substitution-player-in {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 0.5rem;
+}
+
+.livescore-substitution-breakline {
+    margin: 1rem 0;
+    height: 1px;
+    flex-shrink: 0;
+    background: #9e874e;
+    opacity: 0.498;
+}
+
+.livescore-substitution-img {
+    max-height: 15px;
+    max-width: 15px;
+}
+
+.livescore-substitution-player-out span {
+    vertical-align: top;
+}
+
+.lineups-menu {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2b2b32;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 1rem 0;
+}
+
+.home-formation,
+.away-formation {
+    color: #bdbdbd;
+    /* Matches Tailwind `text-[#BDBDBD]` */
+}
+
+.lineups-title {
+    color: #ebc76e;
+    /* Matches Tailwind `text-[#EBC76E]` */
+}
+
+.ls-formation-last-row {
+    margin-bottom: 10px;
+}
+
+.ls-formation-title-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #7e7b7b;
+    background: #d9d9d9;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    height: 29px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .formation-title {
+        flex: 1;
+        width: 20%;
+        color: #7e7b7b;
+        text-align: center;
+    }
+
+    .formation-home {
+        flex: 1;
+        width: 40%;
+        text-align: left;
+        margin-left: 10px;
+    }
+
+    .formation-away {
+        flex: 1;
+        width: 40%;
+        text-align: right;
+        margin-right: 10px;
+    }
+}
+
+.player-box-wrapper {
+    align-items: center;
+
+    .player-box {
+        display: flex;
+        flex-direction: column;
+        width: 33px;
+        height: 33px;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        position: relative;
+
+        .player-number {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .formation-subs-player-icon {
+            width: 11px;
+            height: 11px;
+            position: absolute;
+            right: -4px;
+            bottom: 0;
+        }
+
+        .formation-event-card-player-icon {
+            width: 14px;
+            height: 17px;
+            position: absolute;
+            right: -4px;
+            top: -5px;
+        }
+
+        .formation-goal-player-icon {
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            left: -4px;
+            top: -5px;
+        }
+    }
+}
+
+.formation-green-field-container {
+    background-color: #58741f;
+    padding: 15px 15px;
+}
+
+.formation-green-field-container-in {
+    background: repeating-linear-gradient(180deg,
+            #516d14,
+            #516d14 10%,
+            #58741f 0,
+            #58741f 20%);
+    border: 2px solid #96a772;
+    height: 808px;
+    overflow: hidden;
+    position: relative;
+
+    .home-field {
+        display: flex;
+        flex-direction: column;
+        height: 48%;
+        justify-content: space-between;
+        padding: 0.5rem;
+        position: absolute;
+        width: 100%;
+        z-index: 20;
+
+        .livescore-formation-home-container {
+            align-items: flex-start;
+            color: black;
+            display: flex;
+
+            .box {
+                flex: 1 1;
+
+                .content {
+                    display: flex;
+                    justify-content: center;
+
+                    color: white;
+                    display: flex;
+                    font-size: 11px;
+                    font-weight: 700;
+                    justify-content: center;
+                    text-align: center;
+
+                    .number-box {
+                        background-color: #111;
+                    }
+
+                    .eo {
+                        background-color: #111;
+                    }
+
+                    .name {
+                        color: red;
+                        display: flex;
+                        font-size: 11px;
+                        font-weight: 700;
+                        justify-content: center;
+                        text-align: center;
+                    }
+                }
+
+                .player-name {
+                    color: #fff;
+                    display: flex;
+                    font-size: 11px;
+                    font-weight: 700;
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .away-field {
+        display: flex;
+        flex-direction: column;
+        height: 49%;
+        justify-content: space-between;
+        padding: 0.5rem;
+        position: absolute;
+        width: 100%;
+        z-index: 20;
+        top: 50%;
+    }
+
+    .livescore-formation-away-container {
+        top: 50%;
+        align-items: flex-start;
+        color: black;
+        display: flex;
+
+        .box {
+            flex: 1 1;
+
+            .content {
+                display: flex;
+                justify-content: center;
+
+                color: white;
+                display: flex;
+                font-size: 11px;
+                font-weight: 700;
+                justify-content: center;
+                text-align: center;
+
+                .number-box {
+                    background-color: #111;
+                }
+
+                .eo {
+                    background-color: #111;
+                }
+
+                .name {
+                    color: red;
+                    display: flex;
+                    font-size: 11px;
+                    font-weight: 700;
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
+
+            .player-name {
+                color: #fff;
+                display: flex;
+                font-size: 11px;
+                font-weight: 700;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+
+    .four-corner-kick {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        .corner-kick-tr {
+            left: -20px;
+            top: -20px;
+
+            border: 2px solid #96a772;
+            border-radius: 9999px;
+            height: 2.5rem;
+            width: 2.5rem;
+            position: absolute;
+        }
+
+        .corner-kick-tl {
+            left: calc(100% - 20px);
+            top: -20px;
+
+            border: 2px solid #96a772;
+            border-radius: 9999px;
+            height: 2.5rem;
+            width: 2.5rem;
+            position: absolute;
+        }
+
+        .corner-kick-br {
+            bottom: -20px;
+            right: -20px;
+
+            border: 2px solid #96a772;
+            border-radius: 9999px;
+            height: 2.5rem;
+            width: 2.5rem;
+            position: absolute;
+        }
+
+        .corner-kick-bl {
+            bottom: -20px;
+            left: -20px;
+
+            border: 2px solid #96a772;
+            border-radius: 9999px;
+            height: 2.5rem;
+            width: 2.5rem;
+            position: absolute;
+        }
+    }
+
+    .field-center-line {
+        border: 1px solid #96a772;
+        position: absolute;
+        top: calc(50% - 2px);
+        width: 100%;
+    }
+
+    .field-center-circle {
+        border: 2px solid #96a772;
+        border-radius: 9999px;
+        height: 76px;
+        left: calc(50% - 38px);
+        top: calc(50% - 38px);
+        width: 76px;
+        position: absolute;
+    }
+
+    .goal-keeper-area-bigbox {
+        top: -2px;
+
+        height: 10%;
+        z-index: 19;
+
+        border: 2px solid #96a772;
+        left: 25%;
+        position: absolute;
+        width: 50%;
+
+        .goal-keeper-area-smallbox {
+            top: -2px;
+
+            border: 2px solid #96a772;
+            left: 25%;
+            position: absolute;
+            width: 50%;
+
+            height: 1.5rem;
+        }
+    }
+
+    .goal-keeper-area-semi-circle {
+        top: 81px;
+        transform: rotate(180deg);
+
+        border: 2px solid #96a772;
+        border-radius: 50% 50% 0 0/100% 100% 0 0;
+        height: 15px;
+        left: calc(50% - 29px);
+        position: absolute;
+        width: 58px;
+    }
+
+    .goal-keeper-area-semi-circle-away {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-width: 2px;
+        bottom: 81px;
+        top: auto;
+
+        border: 2px solid #96a772;
+        border-radius: 50% 50% 0 0/100% 100% 0 0;
+        height: 15px;
+        left: calc(50% - 29px);
+        position: absolute;
+        width: 58px;
+    }
+
+    .center-line-dot {
+        position: absolute;
+        background-color: #96a772;
+        border-radius: 9999px;
+        height: 6px;
+        left: calc(50% - 3px);
+        top: calc(50% - 4px);
+        width: 6px;
+    }
+
+    .goal-keeper-area-bigbox-away {
+        height: 10%;
+        z-index: 19;
+
+        border: 2px solid #96a772;
+        left: 25%;
+        position: absolute;
+        width: 50%;
+
+        border-top: 2px solid #96a772;
+        bottom: -2px;
+        top: auto;
+
+        .goal-keeper-area-smallbox-away {
+            border-top: 2px solid #96a772;
+            bottom: -2px;
+            top: auto;
+
+            border: 2px solid #96a772;
+            left: 25%;
+            position: absolute;
+            width: 50%;
+
+            height: 1.5rem;
+        }
+    }
+
+    .green-fieldcorner-circle {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        border: 2px solid #96a772;
+        border-radius: 9999px;
+        height: 2.5rem;
+        position: absolute;
+        width: 2.5rem;
+
+        .fieldcorner-top-left {
+            left: -20px;
+            top: -20px;
+        }
+
+        .fieldcorner-top-right {
+            left: -20px;
+            top: -20px;
+        }
+
+        .fieldcorner-bottom-left {
+            bottom: -20px;
+            left: -20px;
+        }
+
+        .fieldcorner-bottom-right {
+            bottom: -20px;
+            right: -20px;
+        }
+    }
+}
+
+html.dark {
+    .ls-formation-title-box {
+        color: #bdbdbd;
+        background: #2b2b32;
+
+        .formation-title {
+            color: #ebc76e;
+        }
+    }
+}
+
+@media only screen and (max-width: 475px) {
+    .player-box-wrapper {
+        .player-box {
+            width: 30px;
+            height: 30px;
+            font-size: 10px;
+
+            .formation-subs-player-icon {
+                width: 11px;
+                height: 11px;
+            }
+
+            .formation-event-card-player-icon {
+                width: 11px;
+                height: 14px;
+            }
+
+            .formation-goal-player-icon {
+                width: 11px;
+                height: 14px;
+            }
+        }
+    }
+
+    .livescore-formation-home-container {
+        .box {
+            .content {
+                font-size: 8px;
+
+                .name {
+                    font-size: 8px;
+                }
+            }
+
+            .player-name {
+                font-size: 8px;
+                max-height: 5px;
+            }
+        }
+    }
+
+    .livescore-formation-away-container {
+        .box {
+            .content {
+                font-size: 8px;
+
+                .name {
+                    font-size: 8px;
+                }
+            }
+
+            .player-name {
+                font-size: 8px;
+            }
+        }
+    }
+}
+
+.ls-formation-title-box {
+    font-size: 12px;
+}
+
+.livescore-no-formation-message {
+    color: #fff;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+}
+
+.livescore-summary-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+    .livescore-summary-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 475px) {
+    .livescore-summary-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.livescore-summary-box-card-search {
+    border-color: #7e7b7b;
+    border-radius: 7.5px;
+    border: 2px solid #2b2b32;
+}
+
+.all-top-matches-box {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.all-top-matches-box .all-top-matches {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.all-top-matches-box .all-top-matches:hover {
+    color: #f1d88c;
+}
+
+.all-top-matches-box.focus .all-top-matches,
+.all-top-matches-box:hover .all-top-matches {
+    color: #f1d88c;
+}
+
+.all-top-matches-box.focus,
+.all-top-matches-box:hover {
+    background: #2b2b32;
+}
+
+.all-top-matches-box.img {
+    width: 9px;
+    height: 3px;
+}
+
+.top-matches {
+    color: #7e7b7b;
+    font-size: 14px;
+    font-weight: 700;
+    height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.top-matches-option {
+    font-size: 16px;
+    font-weight: 500;
+    height: 49px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+    border-top: 1px solid #2b2b32;
+}
+
+.top-matches-option .livescore-summary-league-flag-icn {
+    width: 27px;
+    height: 27px;
+}
+
+.top-matches-option.focus,
+.top-matches-option:hover {
+    color: #f1d88c;
+    background: #2b2b32;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+input[data-autocompleted] {
+    background-color: transparent !important;
+}
+
+.game-card-container4 {
+    /* display: grid; */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    gap: 15px;
+    /* padding: 20px; */
+    padding: 1rem 1rem 0 1rem;
+    /* Adjust for responsiveness */
+    /* margin: 0 auto; */
+    position: relative;
+    max-width: 254px;
+}
+
+.game-card-container4-item {
+    background: #181818;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s;
+
+    z-index: 1;
+    /* box-shadow: -2px -2px 6px #ccab67; */
+}
+
+.game-card-container4-item:hover {
+    transform: scale(1.05);
+}
+
+.game-card-container4-item img {
+    width: 50%;
+    height: auto;
+    padding-top: 1rem;
+    border-radius: 8px;
+}
+
+.game-card-container4-item-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    min-width: 63px;
+    height: auto;
+    z-index: 2;
+}
+
+.game-card-container4-item-card-content {
+    padding: 15px 15px 0 15px;
+}
+
+.game-card-container4-item-game-type {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 0 0 5px;
+}
+
+.game-card-container4-item-stakes {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #ebc76e;
+}
+
+.game-card-container4-item-description {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #d9d9d9;
+}
