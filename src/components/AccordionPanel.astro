@@ -1,0 +1,31 @@
+---
+interface AccordionPanelProps {
+  title: string;
+  content: string;
+  open?: boolean;
+}
+
+const { title, content, open } = Astro.props;
+---
+
+<div>
+  <details class="h4style1-accordion-panel h3style1-accordion-h4-margin" open={open}>
+    <summary>
+      <h4 class="h4style1-accordion">
+        <span class={`h4style1-accordion-text ${open ? 'h4style1-expand' : ''}`}>
+          {title}
+        </span>
+        <span
+          class={`h4style1-accordion-icn ${open ? 'h4style1-flip-vertical' : 'h4style1-flip-vertical-transition'}`}
+        >
+          <img src="/img/icn-h4-expand.avif" alt="อ่านเพิ่มเติม" />
+        </span>
+      </h4>
+    </summary>
+    <p
+      class={`h4style1-accordion-panel-content ${open ? 'h4style1-accordion-h4-open' : 'h4style1-accordion-h4-close'}`}
+    >
+      {content}
+    </p>
+  </details>
+</div>

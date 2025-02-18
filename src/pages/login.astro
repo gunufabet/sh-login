@@ -7,6 +7,8 @@ import TabMenu from '@components/TabMenu.astro';
 import AccordionSection from '@components/AccordionSection.astro';
 import AccordionSectionWithExpand from '@components/AccordionSectionWithExpand.astro';
 import Accordion from '../components/Accordion.astro';
+import AccordionPanel from '../components/AccordionPanel.astro';
+
 import { tabItems } from '../data/gameData';
 
 import '../styles/header.css';
@@ -62,4 +64,20 @@ const footballDescription = `UFABET แทงบอล เป็นแพลต�
   <Accordion title={loremIpsumHeader} initialOpen={true}>
     {loremIpsumContent}
   </Accordion>
+
+  <AccordionPanel
+    title="What is Lorem Ipsum?"
+    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+    open={true}
+  />
+
+  <AccordionPanel
+    title="Where does it come from?"
+    content="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+  />
+
+  <AccordionPanel
+    title="Why do we use it?"
+    content="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters."
+  />
 </LoginLayout>
