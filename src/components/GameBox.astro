@@ -1,0 +1,151 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  imageUrl: string;
+  stats: {
+    winningOdds: string;
+    theme: string;
+    type: string;
+    provider: string;
+    level: string;
+  };
+}
+
+const { title, description, imageUrl, stats } = Astro.props;
+---
+
+<div class="game-container">
+  <div class="game-box-background"></div>
+
+  <div class="game-image-container">
+    <img
+      src={imageUrl}
+      alt={title}
+      width="293"
+      height="120"
+      class="game-image"
+    />
+  </div>
+
+  <div class="game-title">{title}</div>
+  <p class="game-description">{description}</p>
+
+  <div class="game-stats">
+    <div class="stat-row">
+      <span class="stat-label">Winning Odds:</span>
+      <span class="stat-value">{stats.winningOdds}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Theme:</span>
+      <span class="stat-value">{stats.theme}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Type:</span>
+      <span class="stat-value">{stats.type}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Provider:</span>
+      <span class="stat-value">{stats.provider}</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-label">Level:</span>
+      <span class="stat-value">{stats.level}</span>
+    </div>
+  </div>
+
+  <div class="login-button">
+    <span>Login UFABET to Bet</span>
+  </div>
+
+  <div class="dot-indicators">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<style>
+  <style > .game-box {
+    width: 100%;
+    max-width: 293px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .game-image-container {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .game-title {
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .game-description {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+  }
+
+  .game-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+  }
+
+  .stat-label {
+    color: #a0a0a0;
+  }
+
+  .stat-value {
+    color: #ffffff;
+  }
+
+  .login-button {
+    background: #ffd700;
+    color: #000000;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: auto;
+  }
+
+  .dot-indicators {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #404040;
+  }
+
+  .dot.active {
+    background: #ffd700;
+  }
+</style>

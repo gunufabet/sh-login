@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  content: string;
+}
+
+const { title, content } = Astro.props;
+---
+
+<details
+  class="h2style1-accordion-panel h2style1-disabled h2style1-accordion-h2-add-padding"
+  open
+  style="margin-top: 1rem;"
+>
+  <summary>
+    <h2 class="h2style1-accordion">
+      <span class="h2style1-accordion-text">{title}</span>
+      <span class="h2style1-accordion-indent"></span>
+    </h2>
+  </summary>
+  <p class="h2style1-accordion-panel-content h2style1-close h2style1-clamped">
+    {content}
+  </p>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <button tabindex="0" aria-label="อ่านเพิ่มเติม">
+      <img
+        class="h2style1-flip-vertical-transition"
+        src="/img/icn-view-more.avif"
+        alt="อ่านเพิ่มเติม"
+      />
+    </button>
+  </div>
+  <div class="h2style1-accordion-panel-content" style="display: none;"></div>
+</details>

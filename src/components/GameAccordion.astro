@@ -1,0 +1,44 @@
+---
+interface GameImage {
+  title: string;
+  src: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  gameImages: GameImage[];
+}
+
+const { title, description, gameImages } = Astro.props;
+---
+
+<details class="h3style1-accordion-panel" open>
+  <summary>
+    <h3 class="h3style1-accordion">
+      <span class="h3style1-accordion-text">{title}</span>
+      <img 
+        class="h3style1-accordion-icn h3style1-flip-vertical-transition" 
+        src="/img/icn-h3-indent.avif" 
+        alt="อ่านเพิ่มเติม"
+      >
+    </h3>
+    <div class="h3style1-accordion-break-line"></div>
+  </summary>
+  <p class="h3style1-accordion-panel-content h3style1-accordion-h3-close">
+    {description}
+  </p>
+  <div class="game-container" style="padding-top: 2rem; padding-bottom: 2rem;">
+    {gameImages.map((game) => (
+      <div>
+        <img 
+          class="game-container-img-item"
+          alt={game.title}
+          srcset={`${game.src} 480w, ${game.src} 800w, ${game.src} 1200w`}
+          src={game.src}
+          loading="lazy"
+        />
+      </div>
+    ))}
+  </div>
+</details>

@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div>
+  <div class="modal-content">
+    <div class="logo-header">
+      <Image
+        class="img-logo"
+        src="/img/ubet-logo.avif"
+        alt="ufabet logo"
+        width={128}
+        height={22}
+      />
+    </div>
+
+    <form class="login-form">
+      <div class="login-input-container">
+        <Image
+          class="imgLeft"
+          src="/img/icn-user.avif"
+          alt="ชื่อผู้ใช้"
+          width={24}
+          height={24}
+        />
+        <span class="login-placeholder">ชื่อผู้ใช้</span>
+        <input class="login-field" type="text" id="username" name="username" />
+      </div>
+
+      <div class="login-input-container">
+        <Image
+          class="imgLeft"
+          src="/img/icn-password.avif"
+          alt="รหัสผ่าน"
+          width={24}
+          height={24}
+        />
+        <span class="login-placeholder">รหัสผ่าน</span>
+        <input
+          class="login-field"
+          type="password"
+          id="password"
+          name="password"
+        />
+        <Image
+          class="imgRight"
+          src="/img/icn-show-password.avif"
+          alt="แสดงรหัสผ่าน"
+          width={16}
+          height={11}
+        />
+      </div>
+    </form>
+
+    <button class="login-btn" id="sign-up">เข้าสู่ระบบ</button>
+
+    <div class="login-footer">
+      <button class="join-now">สมัคร</button>
+      <button class="forgot-pw">ลืมรหัสผ่าน</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .modal-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
+    max-width: 322.582px;
+    flex-shrink: 0;
+    border-radius: 13px;
+    border: 1px solid rgba(247, 199, 151, 0.3);
+    background: linear-gradient(
+      0deg,
+      rgba(128, 126, 117, 0.75) -0.04%,
+      rgba(23, 21, 22, 0.75) -0.04%,
+      rgba(97, 97, 95, 0.75) 97.15%
+    );
+    backdrop-filter: blur(7px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+</style>
