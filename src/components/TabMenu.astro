@@ -1,0 +1,53 @@
+---
+interface TabItem {
+  id: string;
+  label: string;
+  isActive?: boolean;
+}
+
+interface Props {
+  items: TabItem[];
+  onSelect?: (id: string) => void;
+}
+
+const { items } = Astro.props;
+---
+
+<div class="tab-menu-scrollmenu" tabindex="0" role="tablist" aria-label="Scrollable Tab Menu">
+  {
+    items.map((item) => (
+      <div>
+        <div
+          id={item.id}
+          role="tab"
+          aria-selected={item.isActive}
+          class={`tab-menu-item ${
+            item.isActive 
+              ? "tab-menu-scrollmenuItemActive tab-menu-tab-highlight" 
+              : "tab-menu-scrollmenuItemNotActive"
+          }`}
+        >
+          <h2 class="tab-menu-item-width">{item.label}</h2>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  const tabItems = document.querySelectorAll('.tab-menu-item');
+  
+  tabItems.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabItems.forEach(item => {
+        item.setAttribute('aria-selected', 'false');
+        item.classList.remove('tab-menu-scrollmenuItemActive', 'tab-menu-tab-highlight');
+        item.classList.add('tab-menu-scrollmenuItemNotActive');
+      });
+      
+      tab.setAttribute('aria-selected', 'true');
+      tab.classList.remove('tab-menu-scrollmenuItemNotActive');
+      tab.classList.add('tab-menu-scrollmenuItemActive', 'tab-menu-tab-highlight');
+    });
+  });
+</script>

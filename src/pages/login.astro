@@ -2,55 +2,15 @@
 import Header from '@components/Header.astro';
 import LoginBox from '@components/LoginBox.astro';
 import LoginLayout from '@layouts/LoginLayout.astro';
-import BoxLayout from '@components/BoxLayout.astro';
 import GameBox from '@components/GameBox.astro';
-import GameAccordion from '@components/GameAccordion.astro';
-import '../styles/content.css';
 import CollapsibleContent from '@components/CollapsibleContent.astro';
+import TabMenu from '@components/TabMenu.astro';
+import AccordionSection from '@components/AccordionSection.astro';
+import AccordionSectionWithExpand from '@components/AccordionSectionWithExpand.astro';
 
-const gameData = {
-  title: 'Amazing Slots',
-  description: 'Spin the reels and hope for matching symbols to win big!',
-  imageUrl: '/img/games/slots.avif',
-  stats: {
-    winningOdds: '1 : 10',
-    theme: 'Casino',
-    type: 'Card Game',
-    provider: 'Microgaming',
-    level: 'Expert',
-  },
-};
+import { gameData, tabItems } from '../data/gameData';
 
-const gameImages = [
-  {
-    title: 'ฟอร์จูนเจมส์ 3 สล็อต',
-    src: 'https://ufshseo-cdn.mybet789.com/ฟอร์จูนเจมส์ 3.avif',
-  },
-  {
-    title: 'ริชแมนสล็อต',
-    src: 'https://ufshseo-cdn.mybet789.com/ริชแมน.avif',
-  },
-  {
-    title: 'โกลเดน เอ็มไพร์ สล็อต',
-    src: 'https://ufshseo-cdn.mybet789.com/โกลเดน เอ็มไพร์.avif',
-  },
-  {
-    title: 'ลัคกี้ฟอร์จูนสล็อต',
-    src: 'https://ufshseo-cdn.mybet789.com/ลัคกี้ฟอร์จูน .avif',
-  },
-  {
-    title: 'มาจอง เวย์ส 2 สล็อต',
-    src: 'https://ufshseo-cdn.mybet789.com/มาจอง เวย์ 2.avif',
-  },
-  {
-    title: 'เทรเชอร์ส แอซเท็ค',
-    src: 'https://ufshseo-cdn.mybet789.com/สาวถ้ำ.avif',
-  },
-];
-
-const slotDescription = `เกมสล็อตของ UFABET เป็นจุดเด่นของแพลตฟอร์ม นำเสนอเกมที่หลากหลายซึ่งดึงดูดผู้เล่นจำนวนมาก แพลตฟอร์มนี้มีธีมหลากหลาย ตั้งแต่การผจญภัยไปจนถึงสล็อตผลไม้แบบคลาสสิก และยังรับประกันกราฟิกคุณภาพสูงและการเล่นที่น่าดึงดูด ผู้เล่นเพลิดเพลินกับวิดีโอสล็อตที่ทันสมัยพร้อมเพย์ไลน์หลายเส้น, คุณสมบัติโบนัสแบบโต้ตอบ, และโปรเกรสซีฟแจ็คพอต ซึ่งสามารถนำไปสู่การชนะรางวัลใหญ่ <a href="#" target="_blank"><strong>เกมสล็อตบน UFABET</strong></a> ขึ้นอยู่กับโชคล้วนๆ พวกมันมีชุดวงล้อที่มีสัญลักษณ์ต่างๆ และเพย์ไลน์ ผู้เล่นวางเดิมพันแล้วหมุนวงล้อเพื่อเล่น ผู้เล่นจะได้รับเงินรางวัลหากสัญลักษณ์เรียงตัวกันในรูปแบบที่ชนะบนเพย์ไลน์ที่ใช้งานอยู่ UFABET ยกระดับประสบการณ์ด้วยโบนัสและโปรโมชั่นที่ปรับให้เข้ากับผู้เล่น, อินเตอร์เฟซที่ใช้งานง่าย และความเข้ากันได้กับมือถือ ทำให้สามารถเล่นได้ทุกที่ทุกเวลา<br><br>
-
-Ufabet มอบประสบการณ์ที่ราบรื่นสำหรับผู้ที่ชื่นชอบเกมสล็อต เริ่มต้นด้วย <span class="text-style-1">การเข้าสู่ระบบ Ufabet สำหรับเกมสล็อต</span> ช่วยให้ผู้ใช้เข้าถึงเกมสล็อตหลากหลายได้ทันที <span class="text-style-1">เว็บตรง Ufabet สำหรับเดิมพันเกมสล็อต</span> นำเสนอแพลตฟอร์มที่ใช้งานง่ายสำหรับทั้งผู้เล่นที่มีประสบการณ์และผู้เล่นใหม่ <span class="text-style-1">การสมัคร Ufabet สำหรับเกมสล็อต</span> เป็นกระบวนการที่รวดเร็วและง่ายดาย ช่วยให้ผู้เล่นเริ่มเล่นได้ทันทีสำหรับนักพนันที่ต้องการเริ่มต้น ผู้ใช้มือถือสามารถเข้าใช้งาน <span class="text-style-1">Ufabet ผ่านทางเข้ามือถือสำหรับเกมสล็อต</span> มอบความสะดวกสบายในการเดิมพันจากทุกที่ <span class="text-style-1">การฝากเงิน Ufabet สำหรับเกมสล็อต</span> ทำได้ง่าย พร้อมตัวเลือกที่รวดเร็วและปลอดภัย สุดท้าย <span class="text-style-1">การถอนเงิน Ufabet สำหรับการแทงเกมสล็อต</span> รับประกันว่าเงินรางวัลจะถูกโอนอย่างรวดเร็ว มอบประสบการณ์การเดิมพันที่เชื่อถือได้และมีประสิทธิภาพสำหรับผู้ที่ชื่นชอบเกมสล็อตทั้งหมด`;
+import '../styles/content.css';
 
 const loremIpsumContent = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -60,73 +20,36 @@ const loremIpsumContent = `Lorem ipsum dolor sit amet, consectetur adipiscing el
   ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
   labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
   laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-  cupidatat non`;
+  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat non`;
+
+const slotDescription = `เกมสล็อตของ UFABET เป็นจุดเด่นของแพลตฟอร์ม นำเสนอเกมที่หลากหลายซึ่งดึงดูดผู้เล่นจำนวนมาก แพลตฟอร์มนี้มีธีมหลากหลาย ตั้งแต่การผจญภัยไปจนถึงสล็อตผลไม้แบบคลาสสิก และยังรับประกันกราฟิกคุณภาพสูงและการเล่นที่น่าดึงดูด ผู้เล่นเพลิดเพลินกับวิดีโอสล็อตที่ทันสมัยพร้อมเพย์ไลน์หลายเส้น, คุณสมบัติโบนัสแบบโต้ตอบ, และโปรเกรสซีฟแจ็คพอต ซึ่งสามารถนำไปสู่การชนะรางวัลใหญ่ <a href="#" target="_blank"><strong>เกมสล็อตบน UFABET</strong></a> ขึ้นอยู่กับโชคล้วนๆ พวกมันมีชุดวงล้อที่มีสัญลักษณ์ต่างๆ และเพย์ไลน์ ผู้เล่นวางเดิมพันแล้วหมุนวงล้อเพื่อเล่น ผู้เล่นจะได้รับเงินรางวัลหากสัญลักษณ์เรียงตัวกันในรูปแบบที่ชนะบนเพย์ไลน์ที่ใช้งานอยู่ UFABET ยกระดับประสบการณ์ด้วยโบนัสและโปรโมชั่นที่ปรับให้เข้ากับผู้เล่น, อินเตอร์เฟซที่ใช้งานง่าย และความเข้ากันได้กับมือถือ ทำให้สามารถเล่นได้ทุกที่ทุกเวลา<br><br>
+
+Ufabet มอบประสบการณ์ที่ราบรื่นสำหรับผู้ที่ชื่นชอบเกมสล็อต เริ่มต้นด้วย <span class="text-style-1">การเข้าสู่ระบบ Ufabet สำหรับเกมสล็อต</span> ช่วยให้ผู้ใช้เข้าถึงเกมสล็อตหลากหลายได้ทันที <span class="text-style-1">เว็บตรง Ufabet สำหรับเดิมพันเกมสล็อต</span> นำเสนอแพลตฟอร์มที่ใช้งานง่ายสำหรับทั้งผู้เล่นที่มีประสบการณ์และผู้เล่นใหม่ <span class="text-style-1">การสมัคร Ufabet สำหรับเกมสล็อต</span> เป็นกระบวนการที่รวดเร็วและง่ายดาย ช่วยให้ผู้เล่นเริ่มเล่นได้ทันทีสำหรับนักพนันที่ต้องการเริ่มต้น ผู้ใช้มือถือสามารถเข้าใช้งาน <span class="text-style-1">Ufabet ผ่านทางเข้ามือถือสำหรับเกมสล็อต</span> มอบความสะดวกสบายในการเดิมพันจากทุกที่ <span class="text-style-1">การฝากเงิน Ufabet สำหรับเกมสล็อต</span> ทำได้ง่าย พร้อมตัวเลือกที่รวดเร็วและปลอดภัย สุดท้าย <span class="text-style-1">การถอนเงิน Ufabet สำหรับการแทงเกมสล็อต</span> รับประกันว่าเงินรางวัลจะถูกโอนอย่างรวดเร็ว มอบประสบการณ์การเดิมพันที่เชื่อถือได้และมีประสิทธิภาพสำหรับผู้ที่ชื่นชอบเกมสล็อตทั้งหมด`;
+
+const footballDescription = `UFABET แทงบอล เป็นแพลตฟอร์มออนไลน์ที่ทุ่มเทให้กับการเดิมพันกีฬาที่มุ่งเน้นไปที่ฟุตบอล UFABET มีตัวเลือกการเดิมพันที่หลากหลาย รวมถึงมิกซ์พาร์เลย์ การเดิมพันแบบแฮนดิแคป การทายผลสกอร์ที่ถูกต้อง อัตราต่อรองและสูง/ต่ำ คู่/คี่ และจำนวนประตูทั้งหมด 1×2 & โอกาสสองเท่า ครึ่งแรก/เต็มเวลา ประตูแรก/ประตูสุดท้าย การทายผลผู้ชนะทันที เป็นต้น รูปแบบการเดิมพันต่อไปนี้ตอบสนองทั้งนักเดิมพันมือใหม่และมืออาชีพ เพื่อให้แน่ใจว่ามีประสบการณ์การเดิมพันที่หลากหลายและน่าสนใจ<br><br>UFABET ให้ความสำคัญกับ <strong>ความปลอดภัยของผู้ใช้</strong> โดยใช้ <strong>เทคโนโลยีการเข้ารหัส</strong> ขั้นสูงในการปกป้องข้อมูลส่วนบุคคลและข้อมูลทางการเงิน UFABET เป็นที่นิยมในหมู่ผู้ที่ชื่นชอบกีฬาที่ต้องการ <strong><span class="text-style-1">แทงบอล</span></strong> โดยมีการอัปเดตสดและฟีเจอร์การเดิมพันแบบเรียลไทม์ ความมีชื่อเสียงในฐานะแพลตฟอร์ม <strong><a href="#" target="_blank">แทงกีฬา</a></strong> ที่น่าเชื่อถือและปลอดภัยทำให้ได้รับความนิยมจากแฟนฟุตบอล แพลตฟอร์มนี้มี <span class="text-style-1">ตัวเลือกการเดิมพันที่ครบถ้วน</span> และความมุ่งมั่นในความพึงพอใจของผู้ใช้ ซึ่งทำให้แตกต่างจากวงการแทงบอลออนไลน์`;
 ---
 
 <LoginLayout title="Login">
   <Header />
   <div class="main-content">
     <h1 id="main-content-title" class="main-content-title">UFABET</h1>
-    <!-- <div class="content-collapsed" id="content-container">
-      <p class="main-content-detail">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non
-      </p>
-      <div class="fade-overlay"></div>
-    </div>
-    <button
-      class="main-content-show-more toggle-button"
-      id="toggle-content"
-      tabindex="0"
-      aria-label="อ่านเพิ่มเติม"
-      aria-expanded="false"
-    >
-      <img
-        src="/img/icn-view-more.avif"
-        alt="อ่านเพิ่มเติม"
-        class="transition-transform duration-300"
-      />
-    </button> -->
     <CollapsibleContent content={loremIpsumContent} />
-
     <LoginBox />
   </div>
-  <div style="padding-top:2rem;"></div>
-  <div class="tab-menu-scrollmenu" tabindex="0" role="tablist" aria-label="Scrollable Tab Menu">
-    <!--[-->
-    <div>
-      <div id="account" role="tab" aria-selected="false" class="tab-menu-scrollmenuItemNotActive">
-        <h2 class="tab-menu-item-width">UFABET บัญชี</h2>
-      </div>
-    </div><div>
-      <div
-        id="deposit"
-        role="tab"
-        aria-selected="true"
-        class="tab-menu-scrollmenuItemActive tab-menu-tab-highlight"
-      >
-        <h2 class="tab-menu-item-width">UFABET ฝากเงิน</h2>
-      </div>
-    </div><div>
-      <div id="sport" role="tab" aria-selected="false" class="tab-menu-scrollmenuItemNotActive">
-        <h2 class="tab-menu-item-width">UFABET กีฬา</h2>
-      </div>
-    </div>
-  </div>
-
-  <BoxLayout
-    title="Section Title 1"
-    content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
+  <TabMenu items={tabItems} />
+  <AccordionSection
+    title="ประเภทของการแทงบอลที่คุณสามารถทำได้มีอะไรบ้าง?"
+    content={{
+      text: loremIpsumContent,
+      image: {
+        src: 'https://ufshseo-cdn.mybet789.com/เดิมพันฟุตบอล.avif',
+        srcsetSmall: 'https://ufshseo-cdn.mybet789.com/เดิมพันฟุตบอล-small.avif',
+        srcsetMedium: 'https://ufshseo-cdn.mybet789.com/เดิมพันฟุตบอล-medium.avif',
+        alt: 'ตัวเลือกการเดิมพันฟุตบอลบน UFABET',
+      },
+    }}
   />
+  <AccordionSectionWithExpand title="Ufabet แทงบอล คืออะไร?" content={footballDescription} />
 
   <GameBox
     title={gameData.title}
@@ -134,25 +57,4 @@ const loremIpsumContent = `Lorem ipsum dolor sit amet, consectetur adipiscing el
     imageUrl={gameData.imageUrl}
     stats={gameData.stats}
   />
-
-  <div style="padding-bottom: 2rem;"></div>
-
-  <div class="w-[322px] h-[46px] relative">
-    <div
-      class="w-[322px] h-[46px] left-0 top-0 absolute bg-gradient-to-r from-[#2b2b32] to-[#484141] rounded-[25px]"
-    >
-    </div>
-    <div
-      class="left-[123.44px] top-[14px] absolute text-center text-[#ebc76e] text-xs font-medium font-['Prompt']"
-    >
-      More Games
-    </div>
-  </div>
-  <div class="custom-btn-1-show-more-wrapper">
-    <button class="custom-btn-1-show-more-btn" style="min-width: 358px;">ดูเพิ่มเติม</button>
-  </div>
-
-  <div style="padding-top: 2rem;"></div>
-
-  <GameAccordion title="เกมสล็อตบน UFABET" description={slotDescription} gameImages={gameImages} />
 </LoginLayout>

@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string;
+  content: {
+    text: string;
+    image?: {
+      src: string;
+      srcsetSmall?: string;
+      srcsetMedium?: string;
+      alt: string;
+    };
+  };
+  initiallyExpanded?: boolean;
+}
+
+const { title, content, initiallyExpanded = true } = Astro.props;
+---
+
+<details
+  class="h2style1-accordion-panel h2style1-disabled h2style1-accordion-h2-add-padding"
+  open={initiallyExpanded}
+  style="padding-top: 3rem;"
+>
+  <summary>
+    <h2 class="h2style1-accordion">
+      <span class="h2style1-accordion-text">{title}</span>
+      <span class="h2style1-accordion-indent"></span>
+    </h2>
+  </summary>
+
+  <p
+    class={`h2style1-accordion-panel-content ${initiallyExpanded ? 'h2style1-open h2style1-expanded' : 'h2style1-close h2style1-clamped'}`}
+    set:html={content.text}
+  />
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <button tabindex="0" aria-label="อ่านเพิ่มเติม"
+      ><img
+        class="h2style1-flip-vertical-transition"
+        src="/img/icn-view-more.avif"
+        alt="อ่านเพิ่มเติม"
+      /></button
+    >
+  </div>
+
+  {
+    content.image && (
+      <picture class="site-img-wrapper" style="padding-top: 2rem;">
+        {content.image.srcsetSmall && (
+          <source media="(max-width: 480px)" srcset={content.image.srcsetSmall} />
+        )}
+        {content.image.srcsetMedium && (
+          <source media="(max-width: 800px)" srcset={content.image.srcsetMedium} />
+        )}
+        <img
+          class="site-img-wrapper-size"
+          src={content.image.src}
+          alt={content.image.alt}
+          loading="lazy"
+        />
+      </picture>
+    )
+  }
+
+  <div class="h2style1-accordion-panel-content"></div>
+</details>
+
+<script>
+  const details = document.querySelector('.h2style1-accordion-panel');
+  const button = details?.querySelector('button');
+  const content = details?.querySelector('.h2style1-accordion-panel-content');
+
+  button?.addEventListener('click', () => {
+    if (content?.classList.contains('h2style1-expanded')) {
+      content.classList.remove('h2style1-expanded', 'h2style1-open');
+      content.classList.add('h2style1-close', 'h2style1-clamped');
+      button.querySelector('img')?.classList.remove('h2style1-flip-vertical');
+    } else {
+      content?.classList.add('h2style1-expanded', 'h2style1-open');
+      content?.classList.remove('h2style1-close', 'h2style1-clamped');
+      button.querySelector('img')?.classList.add('h2style1-flip-vertical');
+    }
+  });
+</script>

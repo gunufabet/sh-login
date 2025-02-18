@@ -1,0 +1,40 @@
+---
+interface Props {
+  title: string;
+  content: string;
+  initiallyExpanded?: boolean;
+}
+
+const { title, content, initiallyExpanded = true } = Astro.props;
+---
+
+<details class="h2style2-accordion-panel" open={initiallyExpanded} style="padding-top: 3rem;">
+  <summary>
+    <h2 class="h2style2-accordion">
+      <span class="h2style2-accordion-text">{title}</span>
+      <span class="h2style2-accordion-icn h2style2-flip-vertical-transition">
+        <img src="/img/icn-h2-expand.avif" alt="อ่านเพิ่มเติม" />
+      </span>
+      <span class="h2style2-accordion-indent"></span>
+    </h2>
+  </summary>
+  <p class="h2style2-accordion-panel-content h2style2-close" set:html={content} />
+</details>
+
+<script>
+  const details = document.querySelector('.h2style2-accordion-panel');
+  const icon = details?.querySelector('.h2style2-accordion-icn');
+  const content = details?.querySelector('.h2style2-accordion-panel-content');
+
+  details?.addEventListener('toggle', () => {
+    if (details instanceof HTMLDetailsElement && details.open) {
+      icon?.classList.add('h2style2-flip-vertical');
+      content?.classList.remove('h2style2-close');
+      content?.classList.add('h2style2-open');
+    } else {
+      icon?.classList.remove('h2style2-flip-vertical');
+      content?.classList.remove('h2style2-open');
+      content?.classList.add('h2style2-close');
+    }
+  });
+</script>
