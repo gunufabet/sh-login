@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  initialOpen?: boolean;
+}
+
+const { title, initialOpen = false } = Astro.props;
+---
+
+<details class="h3style1-accordion-panel" open={initialOpen} style="margin-top: 1rem;">
+  <summary>
+    <h3 class="h3style1-accordion">
+      <span class="h3style1-accordion-text">
+        {title}
+      </span>
+      <img
+        class={`h3style1-accordion-icn h3style1-flip-vertical-transition ${initialOpen ? 'h3style1-flip-vertical' : ''}`}
+        src="/img/icn-h3-indent.avif"
+        alt="อ่านเพิ่มเติม"
+      />
+    </h3>
+  </summary>
+  <div class="h3style1-accordion-panel-content">
+    <slot />
+  </div>
+</details>
+
+<script>
+  document.querySelectorAll('.h3style1-accordion-panel').forEach((panel) => {
+    const icon = panel.querySelector('.h3style1-accordion-icn');
+
+    panel.addEventListener('toggle', () => {
+      if (panel instanceof HTMLDetailsElement) {
+        if (panel.open) {
+          icon?.classList.add('h3style1-flip-vertical');
+        } else {
+          icon?.classList.remove('h3style1-flip-vertical');
+        }
+      }
+    });
+  });
+</script>
