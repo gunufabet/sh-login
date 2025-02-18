@@ -1,0 +1,47 @@
+---
+interface Props {
+  content: string;
+  buttonLabel?: string;
+  initiallyExpanded?: boolean;
+}
+
+const { content, buttonLabel = 'อ่านเพิ่มเติม', initiallyExpanded = false } = Astro.props;
+---
+
+<div class="main-content">
+  <div class="content-collapsed" id="content-container">
+    <p class="main-content-detail">
+      {content}
+    </p>
+    <div class="fade-overlay"></div>
+  </div>
+  <button
+    class="main-content-show-more toggle-button"
+    id="toggle-content"
+    tabindex="0"
+    aria-label={buttonLabel}
+    aria-expanded={initiallyExpanded}
+  >
+    <img
+      src="/img/icn-view-more.avif"
+      alt={buttonLabel}
+      class="transition-transform duration-300"
+    />
+  </button>
+</div>
+
+<script>
+  const toggleButton = document.getElementById('toggle-content');
+  const contentContainer = document.getElementById('content-container');
+  const contentDetail = contentContainer?.querySelector('.main-content-detail');
+  const buttonImage = toggleButton?.querySelector('img');
+
+  toggleButton?.addEventListener('click', () => {
+    contentContainer?.classList.toggle('content-expanded');
+    contentDetail?.classList.toggle('main-content-detail-open');
+    contentDetail?.classList.toggle('main-content-remove-after');
+    buttonImage?.classList.toggle('main-content-flip-vertical');
+    const isExpanded = contentContainer?.classList.contains('content-expanded');
+    toggleButton.setAttribute('aria-expanded', String(isExpanded));
+  });
+</script>

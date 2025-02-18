@@ -1,103 +1,110 @@
 ---
-import Header from "@components/Header.astro";
-import LoginBox from "@components/LoginBox.astro";
-import LoginLayout from "@layouts/LoginLayout.astro";
-import BoxLayout from "@components/BoxLayout.astro";
-import GameBox from "@components/GameBox.astro";
-import GameAccordion from "@components/GameAccordion.astro";
+import Header from '@components/Header.astro';
+import LoginBox from '@components/LoginBox.astro';
+import LoginLayout from '@layouts/LoginLayout.astro';
+import BoxLayout from '@components/BoxLayout.astro';
+import GameBox from '@components/GameBox.astro';
+import GameAccordion from '@components/GameAccordion.astro';
+import '../styles/content.css';
+import CollapsibleContent from '@components/CollapsibleContent.astro';
 
 const gameData = {
-  title: "Amazing Slots",
-  description: "Spin the reels and hope for matching symbols to win big!",
-  imageUrl: "/img/games/slots.avif",
+  title: 'Amazing Slots',
+  description: 'Spin the reels and hope for matching symbols to win big!',
+  imageUrl: '/img/games/slots.avif',
   stats: {
-    winningOdds: "1 : 10",
-    theme: "Casino",
-    type: "Card Game",
-    provider: "Microgaming",
-    level: "Expert",
+    winningOdds: '1 : 10',
+    theme: 'Casino',
+    type: 'Card Game',
+    provider: 'Microgaming',
+    level: 'Expert',
   },
 };
 
 const gameImages = [
   {
-    title: "ฟอร์จูนเจมส์ 3 สล็อต",
-    src: "https://ufshseo-cdn.mybet789.com/ฟอร์จูนเจมส์ 3.avif"
+    title: 'ฟอร์จูนเจมส์ 3 สล็อต',
+    src: 'https://ufshseo-cdn.mybet789.com/ฟอร์จูนเจมส์ 3.avif',
   },
   {
-    title: "ริชแมนสล็อต",
-    src: "https://ufshseo-cdn.mybet789.com/ริชแมน.avif"
+    title: 'ริชแมนสล็อต',
+    src: 'https://ufshseo-cdn.mybet789.com/ริชแมน.avif',
   },
   {
-    title: "โกลเดน เอ็มไพร์ สล็อต",
-    src: "https://ufshseo-cdn.mybet789.com/โกลเดน เอ็มไพร์.avif"
+    title: 'โกลเดน เอ็มไพร์ สล็อต',
+    src: 'https://ufshseo-cdn.mybet789.com/โกลเดน เอ็มไพร์.avif',
   },
   {
-    title: "ลัคกี้ฟอร์จูนสล็อต",
-    src: "https://ufshseo-cdn.mybet789.com/ลัคกี้ฟอร์จูน .avif"
+    title: 'ลัคกี้ฟอร์จูนสล็อต',
+    src: 'https://ufshseo-cdn.mybet789.com/ลัคกี้ฟอร์จูน .avif',
   },
   {
-    title: "มาจอง เวย์ส 2 สล็อต",
-    src: "https://ufshseo-cdn.mybet789.com/มาจอง เวย์ 2.avif"
+    title: 'มาจอง เวย์ส 2 สล็อต',
+    src: 'https://ufshseo-cdn.mybet789.com/มาจอง เวย์ 2.avif',
   },
   {
-    title: "เทรเชอร์ส แอซเท็ค",
-    src: "https://ufshseo-cdn.mybet789.com/สาวถ้ำ.avif"
-  }
+    title: 'เทรเชอร์ส แอซเท็ค',
+    src: 'https://ufshseo-cdn.mybet789.com/สาวถ้ำ.avif',
+  },
 ];
 
 const slotDescription = `เกมสล็อตของ UFABET เป็นจุดเด่นของแพลตฟอร์ม นำเสนอเกมที่หลากหลายซึ่งดึงดูดผู้เล่นจำนวนมาก แพลตฟอร์มนี้มีธีมหลากหลาย ตั้งแต่การผจญภัยไปจนถึงสล็อตผลไม้แบบคลาสสิก และยังรับประกันกราฟิกคุณภาพสูงและการเล่นที่น่าดึงดูด ผู้เล่นเพลิดเพลินกับวิดีโอสล็อตที่ทันสมัยพร้อมเพย์ไลน์หลายเส้น, คุณสมบัติโบนัสแบบโต้ตอบ, และโปรเกรสซีฟแจ็คพอต ซึ่งสามารถนำไปสู่การชนะรางวัลใหญ่ <a href="#" target="_blank"><strong>เกมสล็อตบน UFABET</strong></a> ขึ้นอยู่กับโชคล้วนๆ พวกมันมีชุดวงล้อที่มีสัญลักษณ์ต่างๆ และเพย์ไลน์ ผู้เล่นวางเดิมพันแล้วหมุนวงล้อเพื่อเล่น ผู้เล่นจะได้รับเงินรางวัลหากสัญลักษณ์เรียงตัวกันในรูปแบบที่ชนะบนเพย์ไลน์ที่ใช้งานอยู่ UFABET ยกระดับประสบการณ์ด้วยโบนัสและโปรโมชั่นที่ปรับให้เข้ากับผู้เล่น, อินเตอร์เฟซที่ใช้งานง่าย และความเข้ากันได้กับมือถือ ทำให้สามารถเล่นได้ทุกที่ทุกเวลา<br><br>
 
 Ufabet มอบประสบการณ์ที่ราบรื่นสำหรับผู้ที่ชื่นชอบเกมสล็อต เริ่มต้นด้วย <span class="text-style-1">การเข้าสู่ระบบ Ufabet สำหรับเกมสล็อต</span> ช่วยให้ผู้ใช้เข้าถึงเกมสล็อตหลากหลายได้ทันที <span class="text-style-1">เว็บตรง Ufabet สำหรับเดิมพันเกมสล็อต</span> นำเสนอแพลตฟอร์มที่ใช้งานง่ายสำหรับทั้งผู้เล่นที่มีประสบการณ์และผู้เล่นใหม่ <span class="text-style-1">การสมัคร Ufabet สำหรับเกมสล็อต</span> เป็นกระบวนการที่รวดเร็วและง่ายดาย ช่วยให้ผู้เล่นเริ่มเล่นได้ทันทีสำหรับนักพนันที่ต้องการเริ่มต้น ผู้ใช้มือถือสามารถเข้าใช้งาน <span class="text-style-1">Ufabet ผ่านทางเข้ามือถือสำหรับเกมสล็อต</span> มอบความสะดวกสบายในการเดิมพันจากทุกที่ <span class="text-style-1">การฝากเงิน Ufabet สำหรับเกมสล็อต</span> ทำได้ง่าย พร้อมตัวเลือกที่รวดเร็วและปลอดภัย สุดท้าย <span class="text-style-1">การถอนเงิน Ufabet สำหรับการแทงเกมสล็อต</span> รับประกันว่าเงินรางวัลจะถูกโอนอย่างรวดเร็ว มอบประสบการณ์การเดิมพันที่เชื่อถือได้และมีประสิทธิภาพสำหรับผู้ที่ชื่นชอบเกมสล็อตทั้งหมด`;
+
+const loremIpsumContent = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+  ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+  labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+  voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+  cupidatat non`;
 ---
 
 <LoginLayout title="Login">
   <Header />
   <div class="main-content">
     <h1 id="main-content-title" class="main-content-title">UFABET</h1>
-    <p class="main-content-detail-close main-content-detail">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-      do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non
-    </p>
+    <!-- <div class="content-collapsed" id="content-container">
+      <p class="main-content-detail">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non
+      </p>
+      <div class="fade-overlay"></div>
+    </div>
     <button
-      class="main-content-show-more"
+      class="main-content-show-more toggle-button"
+      id="toggle-content"
       tabindex="0"
       aria-label="อ่านเพิ่มเติม"
+      aria-expanded="false"
     >
       <img
-        class="main-content-flip-vertical-transition"
         src="/img/icn-view-more.avif"
         alt="อ่านเพิ่มเติม"
+        class="transition-transform duration-300"
       />
-    </button>
+    </button> -->
+    <CollapsibleContent content={loremIpsumContent} />
 
     <LoginBox />
   </div>
   <div style="padding-top:2rem;"></div>
-  <div
-    class="tab-menu-scrollmenu"
-    tabindex="0"
-    role="tablist"
-    aria-label="Scrollable Tab Menu"
-  >
+  <div class="tab-menu-scrollmenu" tabindex="0" role="tablist" aria-label="Scrollable Tab Menu">
     <!--[-->
     <div>
-      <div
-        id="account"
-        role="tab"
-        aria-selected="false"
-        class="tab-menu-scrollmenuItemNotActive"
-      >
+      <div id="account" role="tab" aria-selected="false" class="tab-menu-scrollmenuItemNotActive">
         <h2 class="tab-menu-item-width">UFABET บัญชี</h2>
       </div>
     </div><div>
@@ -110,12 +117,7 @@ Ufabet มอบประสบการณ์ที่ราบรื่นส�
         <h2 class="tab-menu-item-width">UFABET ฝากเงิน</h2>
       </div>
     </div><div>
-      <div
-        id="sport"
-        role="tab"
-        aria-selected="false"
-        class="tab-menu-scrollmenuItemNotActive"
-      >
+      <div id="sport" role="tab" aria-selected="false" class="tab-menu-scrollmenuItemNotActive">
         <h2 class="tab-menu-item-width">UFABET กีฬา</h2>
       </div>
     </div>
@@ -147,15 +149,10 @@ Ufabet มอบประสบการณ์ที่ราบรื่นส�
     </div>
   </div>
   <div class="custom-btn-1-show-more-wrapper">
-    <button class="custom-btn-1-show-more-btn" style="min-width: 358px;"
-      >ดูเพิ่มเติม</button>
+    <button class="custom-btn-1-show-more-btn" style="min-width: 358px;">ดูเพิ่มเติม</button>
   </div>
 
   <div style="padding-top: 2rem;"></div>
 
-  <GameAccordion 
-    title="เกมสล็อตบน UFABET"
-    description={slotDescription}
-    gameImages={gameImages}
-  />
+  <GameAccordion title="เกมสล็อตบน UFABET" description={slotDescription} gameImages={gameImages} />
 </LoginLayout>

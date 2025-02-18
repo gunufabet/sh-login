@@ -18,17 +18,62 @@ const { title, content } = Astro.props;
       <span class="h2style1-accordion-indent"></span>
     </h2>
   </summary>
-  <p class="h2style1-accordion-panel-content h2style1-close h2style1-clamped">
-    {content}
-  </p>
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <button tabindex="0" aria-label="อ่านเพิ่มเติม">
-      <img
-        class="h2style1-flip-vertical-transition"
-        src="/img/icn-view-more.avif"
-        alt="อ่านเพิ่มเติม"
-      />
-    </button>
+  <div class="content-wrapper">
+    <p 
+      class="h2style1-accordion-panel-content h2style1-close h2style1-clamped"
+      data-full-content={content}
+    >
+      {content}
+    </p>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <button 
+        class="show-more-btn" 
+        tabindex="0" 
+        aria-label="อ่านเพิ่มเติม"
+        aria-expanded="false"
+      >
+        <img
+          class="h2style1-flip-vertical-transition"
+          src="/img/icn-view-more.avif"
+          alt="อ่านเพิ่มเติม"
+        />
+      </button>
+    </div>
   </div>
-  <div class="h2style1-accordion-panel-content" style="display: none;"></div>
 </details>
+
+<script>
+  document.querySelectorAll('.show-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const wrapper = button.closest('.content-wrapper');
+      const content = wrapper?.querySelector('.h2style1-accordion-panel-content');
+      const img = button.querySelector('img');
+      
+      if (!content || !img) return;
+
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+      
+      if (isExpanded) {
+        content.classList.add('h2style1-clamped');
+        img.style.transform = 'rotate(0deg)';
+      } else {
+        content.classList.remove('h2style1-clamped');
+        img.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>
+
+<style>
+  .h2style1-clamped {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .show-more-btn img {
+    transition: transform 0.3s ease;
+  }
+</style>
